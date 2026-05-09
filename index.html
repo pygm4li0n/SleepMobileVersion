@@ -53,11 +53,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:8001;o
 
 #app{display:grid;grid-template-rows:60px 1fr 88px 44px 46px;height:100vh;width:100vw;position:relative;z-index:1}
 
-/* new top banner */
-#topBanner{background:rgba(1,3,1,.95); text-align:center; padding:10px 20px; border-bottom:1px solid var(--bor2); box-shadow:0 4px 50px rgba(0,0,0,.7); z-index:101; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;}
-#topBanner .bn-head{font-family:var(--fd); font-size:24px; letter-spacing:.18em; color:var(--g); text-shadow:var(--gm); text-transform:uppercase;}
-#topBanner .bn-status{font-family:var(--fm); font-size:13px; letter-spacing:.12em; color:var(--g2);}
-
 #nav{display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:rgba(1,3,1,.95);backdrop-filter:blur(30px);border-bottom:1px solid var(--bor2);box-shadow:0 1px 0 rgba(0,255,102,.08),0 4px 50px rgba(0,0,0,.75);position:relative;z-index:100;flex-shrink:0}
 #nav::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--g),transparent);box-shadow:var(--gs)}
 .nav-logo{display:flex;align-items:center;gap:12px}
@@ -134,8 +129,8 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:8001;o
 .pnl-compact .phc-s{font-family:var(--fm);font-size:10px;color:var(--mut3);margin-top:2px}
 .pnl-compact .pnl-verdict{padding:6px 9px;font-family:var(--fd);font-size:13px;letter-spacing:.1em;text-align:center;text-transform:uppercase;border-top:1px solid rgba(255,208,96,.1);flex-shrink:0}
 
-/* new square styles */
-.sq{width:240px;height:80px;margin:0 auto;background:#030010;border-radius:12px;overflow:hidden;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:1fr 1fr;gap:3px;padding:3px;cursor:pointer;flex-shrink:0;}
+/* Nuevo estilo para el cuadrado animado (reemplazo completo) */
+.sq{width:240px;height:80px;background:#030010;border-radius:12px;overflow:hidden;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:1fr 1fr;gap:3px;padding:3px;cursor:pointer;}
 .bulb{border-radius:6px;opacity:0.05;transition:opacity 0.35s ease,box-shadow 0.35s ease,background 0.35s ease;}
 
 #terminal{flex:0 0 auto;background:rgba(0,4,0,.93);border:1px solid var(--bor2);box-shadow:0 0 30px rgba(0,255,102,.1),inset 0 0 20px rgba(0,0,0,.8);backdrop-filter:blur(12px);display:flex;flex-direction:column;overflow:hidden;position:relative}
@@ -187,19 +182,18 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:8001;o
 .sb-foc::-webkit-scrollbar-thumb{background:var(--bor2)}
 .foc-topline{height:1px;background:linear-gradient(90deg,transparent,var(--g),transparent);box-shadow:var(--gs);flex-shrink:0}
 .foc-content{padding:10px 16px 5px;display:flex;flex-direction:column;gap:4px}
-.foc-hd{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
-.foc-hd-left{display:flex;align-items:center;gap:10px}
-.foc-mcap-right{text-align:right;flex:1;}
+.foc-hd{display:flex;align-items:center;gap:10px}
 .foc-logo{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--bor2);background:var(--mut2);flex-shrink:0;box-shadow:0 0 10px rgba(0,255,102,.22)}
 .foc-ticker{font-family:var(--fd);font-size:28px;letter-spacing:.06em;color:var(--g);text-shadow:var(--gm);line-height:.95}
 .foc-name{font-family:var(--fb);font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--cream2)}
 .foc-addr{font-family:var(--fm);font-size:10px;letter-spacing:.06em;color:var(--mut3)}
 .foc-addr .copy-addr-btn{cursor:pointer;display:inline-block;margin-left:5px;font-size:14px;transition:all .2s}
 .foc-addr .copy-addr-btn:hover{transform:scale(1.1)}
-.foc-price-row{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:4px;}
-.foc-price{font-family:var(--fd);font-size:28px;letter-spacing:.03em;line-height:1;color:#FFFFFF;text-shadow:0 0 16px rgba(255,255,255,.3)}
-.mcap-lbl{font-family:var(--fm);font-size:10px;letter-spacing:.14em;color:var(--mut3);text-transform:uppercase}
-.mcap-val{font-family:var(--fd);font-size:32px;color:#FFE8A0;text-shadow:0 0 12px rgba(255,208,96,.5);line-height:1;}
+.foc-price-row{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.foc-price{font-family:var(--fd);font-size:36px;letter-spacing:.03em;line-height:1;color:#FFFFFF;text-shadow:0 0 16px rgba(255,255,255,.3)}
+.foc-mcap-inline{display:flex;align-items:baseline;gap:5px}
+.mcap-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.14em;color:var(--mut3);text-transform:uppercase}
+.mcap-val{font-family:var(--fd);font-size:24px;color:#FFE8A0;text-shadow:0 0 12px rgba(255,208,96,.5);line-height:1}
 
 .drow{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin:0 16px 8px}
 .dc{background:rgba(0,255,102,.04);border:1px solid var(--bor);padding:6px 4px;text-align:center;position:relative;overflow:hidden}
@@ -254,7 +248,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:8001;o
 .ftl{font-family:var(--fm);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut3);text-decoration:none;transition:all .2s}
 .ftl:hover{color:var(--g);text-shadow:var(--gs)}
 
-@media(max-width:900px){#main{grid-template-columns:1fr}#sb{display:none}#bcol{grid-template-columns:1fr;padding:10px}#rightCol{display:none}.nav-mid,.ca-row{display:none}#topRank{display:none}#sleepStrip{height:36px}#sleepStrip .item{font-size:1.2rem}#sleepStrip .sleeper-strip{font-size:.9rem}}
+@media(max-width:900px){#main{grid-template-columns:1fr}#sb{display:none}#bcol{grid-template-columns:1fr;padding:10px}#rightCol{display:none}.nav-mid,.ca-row{display:none}#topRank{display:none}#sleepStrip{height:36px}#sleepStrip .item{font-size:1.2rem}#sleepStrip .sleeper-strip{font-size:.9rem}.sq{width:180px;height:60px}}
 </style>
 </head>
 <body>
@@ -271,12 +265,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:8001;o
 </div>
 
 <div id="app">
-  <!-- new top banner with heading and centered status -->
-  <div id="topBanner">
-    <div class="bn-head">BAGS.FM TOP ACTIVE COINS</div>
-    <div class="bn-status" id="liveStatus">Initializing...</div>
-  </div>
-
   <nav id="nav">
     <div class="nav-logo">
       <div class="nav-moon">🌙</div>
@@ -329,7 +317,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:8001;o
           <div class="pnl-hero" id="pnlHero"></div>
           <div class="pnl-verdict" id="pnlVerdict"></div>
         </div>
-        <!-- new square without label -->
+        <!-- Nuevo cuadrado animado (sin contenido interno) -->
         <div class="sq" id="sq" onclick="nextMode()"></div>
         <div id="terminal">
           <div class="term-hd">
@@ -364,18 +352,16 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:8001;o
         <div class="foc-topline"></div>
         <div class="foc-content">
           <div class="foc-hd">
-            <div class="foc-hd-left">
-              <img class="foc-logo" id="fLogo" alt="">
-              <div><div class="foc-ticker" id="fTicker">--</div><div class="foc-name" id="fName">Select a bubble</div></div>
-            </div>
-            <div class="foc-mcap-right">
-              <div class="mcap-lbl">MCAP</div>
-              <div class="mcap-val" id="focMcVal">--</div>
-            </div>
+            <img class="foc-logo" id="fLogo" alt="">
+            <div><div class="foc-ticker" id="fTicker">--</div><div class="foc-name" id="fName">Select a bubble</div></div>
           </div>
           <div class="foc-addr" id="fAddr">--</div>
           <div class="foc-price-row">
             <span class="foc-price" id="fPrice">--</span>
+            <div class="foc-mcap-inline">
+              <span class="mcap-lbl">MCAP</span>
+              <span class="mcap-val" id="focMcVal">--</span>
+            </div>
           </div>
         </div>
         <div class="drow" id="dRow"></div>
@@ -469,7 +455,7 @@ const fad=a=>a?a.slice(0,8)+"..."+a.slice(-6):"--";
 const gch=t=>Number(t["change"+period]||0);
 const gclr=v=>Number(v||0)>=0?"#00FF66":"#FF2255";
 const gglw=v=>Number(v||0)>=0?"drop-shadow(0 0 20px rgba(0,255,102,.7))":"drop-shadow(0 0 20px rgba(255,34,85,.7))";
-const setSt=msg=>{ ['ftSt','ldSt','liveStatus'].forEach(id=>{ const e=document.getElementById(id); if(e)e.textContent=msg; }); };
+const setSt=msg=>{ ['ftSt','ldSt'].forEach(id=>{ const e=document.getElementById(id); if(e)e.textContent=msg; }); };
 const hideLoader=()=>document.getElementById('ldr').classList.add('out');
 
 async function fetchPair(pair){
@@ -773,96 +759,95 @@ if("ResizeObserver" in window) new ResizeObserver(()=>{ W=cont.clientWidth; H=co
 
 setTimeout(hideLoader, 15000);
 
-// new square modes (replaces old light square)
-(function(){
-  const P=['#8844ff','#3322cc','#ccaaff','#ffffff'];
-  const sq=document.getElementById('sq');
-  const bulbs=[];
-  for(let i=0;i<12;i++){const b=document.createElement('div');b.className='bulb';sq.appendChild(b);bulbs.push(b);}
+// NUEVO CÓDIGO DEL CUADRADO ANIMADO (reemplazo completo)
+const P=['#8844ff','#3322cc','#ccaaff','#ffffff'];
+const sqDiv=document.getElementById('sq');
+const bulbs=[];
+for(let i=0;i<12;i++){const b=document.createElement('div');b.className='bulb';sqDiv.appendChild(b);bulbs.push(b);}
 
-  const LEY={top:[1,2],bot:[7,8]};
-  const REY={top:[3,4],bot:[9,10]};
+const LEY={top:[1,2],bot:[7,8]};
+const REY={top:[3,4],bot:[9,10]};
 
-  function lit(i,c,v=1){bulbs[i].style.background=c;bulbs[i].style.opacity=String(0.05+v*0.95);bulbs[i].style.boxShadow=v>0.2?`0 0 ${v*16}px ${c},0 0 ${v*5}px ${c}`:'none';}
-  function dim(i){bulbs[i].style.opacity='0.05';bulbs[i].style.boxShadow='none';}
-  function dimAll(){for(let i=0;i<12;i++)dim(i);}
+function lit(i,c,v=1){bulbs[i].style.background=c;bulbs[i].style.opacity=String(0.05+v*0.95);bulbs[i].style.boxShadow=v>0.2?`0 0 ${v*16}px ${c},0 0 ${v*5}px ${c}`:'none';}
+function dim(i){bulbs[i].style.opacity='0.05';bulbs[i].style.boxShadow='none';}
+function dimAll(){for(let i=0;i<12;i++)dim(i);}
 
-  function modeEyes(){
-    const frames=[
-      ()=>{dimAll();[...LEY.top,...LEY.bot,...REY.top,...REY.bot].forEach(i=>lit(i,P[2]));lit(2,P[0]);lit(4,P[0]);lit(8,P[0]);lit(10,P[0]);},
-      ()=>{dimAll();[...LEY.top,...LEY.bot,...REY.top,...REY.bot].forEach(i=>lit(i,P[2]));lit(2,P[0]);lit(4,P[0]);lit(8,P[0]);lit(10,P[0]);},
-      ()=>{dimAll();[...LEY.top,...LEY.bot,...REY.top,...REY.bot].forEach(i=>lit(i,P[2]));lit(2,P[0]);lit(4,P[0]);lit(8,P[0]);lit(10,P[0]);},
-      ()=>{dimAll();[...LEY.top,...REY.top].forEach(i=>lit(i,P[2],0.7));[...LEY.bot,...REY.bot].forEach(i=>lit(i,P[1],0.2));},
-      ()=>{dimAll();[2,3].forEach(i=>lit(i,P[2],0.4));[8,9].forEach(i=>lit(i,P[1],0.15));},
-      ()=>{dimAll();[1,2,3,4].forEach(i=>lit(i,P[1],0.2));},
-      ()=>{dimAll();[1,4].forEach(i=>lit(i,P[1],0.12));},
-      ()=>{dimAll();[1,4].forEach(i=>lit(i,P[1],0.12));},
-      ()=>{dimAll();[2,3].forEach(i=>lit(i,P[2],0.4));[8,9].forEach(i=>lit(i,P[1],0.15));},
-      ()=>{dimAll();[...LEY.top,...REY.top].forEach(i=>lit(i,P[2],0.7));[...LEY.bot,...REY.bot].forEach(i=>lit(i,P[1],0.25));},
-    ];
-    let f=0;
-    return setInterval(()=>{frames[f%frames.length]();f++;},380);
-  }
+function modeEyes(){
+  const frames=[
+    ()=>{dimAll();[...LEY.top,...LEY.bot,...REY.top,...REY.bot].forEach(i=>lit(i,P[2]));lit(2,P[0]);lit(4,P[0]);lit(8,P[0]);lit(10,P[0]);},
+    ()=>{dimAll();[...LEY.top,...LEY.bot,...REY.top,...REY.bot].forEach(i=>lit(i,P[2]));lit(2,P[0]);lit(4,P[0]);lit(8,P[0]);lit(10,P[0]);},
+    ()=>{dimAll();[...LEY.top,...LEY.bot,...REY.top,...REY.bot].forEach(i=>lit(i,P[2]));lit(2,P[0]);lit(4,P[0]);lit(8,P[0]);lit(10,P[0]);},
+    ()=>{dimAll();[...LEY.top,...REY.top].forEach(i=>lit(i,P[2],0.7));[...LEY.bot,...REY.bot].forEach(i=>lit(i,P[1],0.2));},
+    ()=>{dimAll();[2,3].forEach(i=>lit(i,P[2],0.4));[8,9].forEach(i=>lit(i,P[1],0.15));},
+    ()=>{dimAll();[1,2,3,4].forEach(i=>lit(i,P[1],0.2));},
+    ()=>{dimAll();[1,4].forEach(i=>lit(i,P[1],0.12));},
+    ()=>{dimAll();[1,4].forEach(i=>lit(i,P[1],0.12));},
+    ()=>{dimAll();[2,3].forEach(i=>lit(i,P[2],0.4));[8,9].forEach(i=>lit(i,P[1],0.15));},
+    ()=>{dimAll();[...LEY.top,...REY.top].forEach(i=>lit(i,P[2],0.7));[...LEY.bot,...REY.bot].forEach(i=>lit(i,P[1],0.25));},
+  ];
+  let f=0;
+  return setInterval(()=>{frames[f%frames.length]();f++;},380);
+}
 
-  function modeZzz(){
-    const path=[0,1,2,3,4,5,11,10,9,8,7,6,6,7,8,9,10,11];
-    let s=0;
-    return setInterval(()=>{
-      dimAll();
-      const i=path[s%path.length];
-      lit(i,P[s%2===0?0:2]);
-      if(s>0)lit(path[(s-1+path.length)%path.length],P[0],0.25);
-      s++;
-    },110);
-  }
+function modeZzz(){
+  const path=[0,1,2,3,4,5,11,10,9,8,7,6,6,7,8,9,10,11];
+  let s=0;
+  return setInterval(()=>{
+    dimAll();
+    const i=path[s%path.length];
+    lit(i,P[s%2===0?0:2]);
+    if(s>0)lit(path[(s-1+path.length)%path.length],P[0],0.25);
+    s++;
+  },110);
+}
 
-  function modeStars(){
-    const state=new Float32Array(12);
-    const target=new Float32Array(12);
-    const cols=Array(12).fill(0).map(()=>P[Math.floor(Math.random()*4)]);
-    function newTargets(){target.forEach((_,i)=>target[i]=Math.random()<0.35?0.1+Math.random()*0.9:0.04);}
-    newTargets();
-    let t=0;
-    return setInterval(()=>{
-      for(let i=0;i<12;i++){
-        state[i]+=(target[i]-state[i])*0.12;
-        if(state[i]>0.08)lit(i,cols[i],state[i]);
-        else dim(i);
-      }
-      if(t%18===0){newTargets();cols.forEach((_,i)=>cols[i]=P[Math.floor(Math.random()*4)]);}
-      t++;
-    },60);
-  }
+function modeStars(){
+  const state=new Float32Array(12);
+  const target=new Float32Array(12);
+  const cols=Array(12).fill(0).map(()=>P[Math.floor(Math.random()*4)]);
+  function newTargets(){target.forEach((_,i)=>target[i]=Math.random()<0.35?0.1+Math.random()*0.9:0.04);}
+  newTargets();
+  let t=0;
+  return setInterval(()=>{
+    for(let i=0;i<12;i++){
+      state[i]+=(target[i]-state[i])*0.12;
+      if(state[i]>0.08)lit(i,cols[i],state[i]);
+      else dim(i);
+    }
+    if(t%18===0){newTargets();cols.forEach((_,i)=>cols[i]=P[Math.floor(Math.random()*4)]);}
+    t++;
+  },60);
+}
 
-  function modeDrift(){
-    let pos=0,row=0,ci=0;
-    return setInterval(()=>{
-      dimAll();
-      const cur=row*6+pos;
-      lit(cur,P[ci%4]);
-      if(pos>0)lit(row*6+pos-1,P[ci%4],0.22);
-      pos++;if(pos>=6){pos=0;row=1-row;if(row===0)ci++;}
-    },130);
-  }
+function modeDrift(){
+  let pos=0,row=0,ci=0;
+  return setInterval(()=>{
+    dimAll();
+    const cur=row*6+pos;
+    lit(cur,P[ci%4]);
+    if(pos>0)lit(row*6+pos-1,P[ci%4],0.22);
+    pos++;if(pos>=6){pos=0;row=1-row;if(row===0)ci++;}
+  },130);
+}
 
-  function modeBreathe(){
-    let t=0;
-    return setInterval(()=>{
-      for(let i=0;i<12;i++){
-        const phase=(t*0.06)+(i%6)*0.3+(Math.floor(i/6)*0.8);
-        const v=0.35+0.65*(0.5+0.5*Math.sin(phase));
-        lit(i,P[i<6?0:1],v*0.8);
-      }
-      t++;
-    },55);
-  }
+function modeBreathe(){
+  let t=0;
+  return setInterval(()=>{
+    for(let i=0;i<12;i++){
+      const phase=(t*0.06)+(i%6)*0.3+(Math.floor(i/6)*0.8);
+      const v=0.35+0.65*(0.5+0.5*Math.sin(phase));
+      lit(i,P[i<6?0:1],v*0.8);
+    }
+    t++;
+  },55);
+}
 
-  const modes=[modeEyes,modeZzz,modeStars,modeDrift,modeBreathe];
-  let idx=0,cur=modes[0]();
-  window.nextMode=function(){clearInterval(cur);dimAll();idx=(idx+1)%5;cur=modes[idx]();};
-})();
+const modes=[modeEyes,modeZzz,modeStars,modeDrift,modeBreathe];
+let idx=0,cur=modes[0]();
+function nextMode(){clearInterval(cur);dimAll();idx=(idx+1)%5;cur=modes[idx]();}
+// Fin del nuevo código del cuadrado animado
 
-// Terminal (unchanged)
+// Terminal
 (function initTerminal(){
   const MAX=6;
   const lines=document.getElementById('termLines');
