@@ -61,8 +61,8 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:8001;o
 .nav-brand{font-family:var(--fd);font-size:34px;letter-spacing:.14em;color:var(--g);text-shadow:var(--gm);line-height:1}
 .nav-tagline{font-family:var(--fm);font-size:11px;letter-spacing:.22em;color:var(--mut3);text-transform:uppercase;margin-top:2px}
 .nav-mid{position:absolute;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px}
-.nav-mid-title{font-family:var(--fd);font-size:20px;letter-spacing:.32em;color:var(--g);text-shadow:var(--gs)}
-.nav-mid-sub{display:none}
+.nav-mid-title{font-family:var(--fd);font-size:20px;letter-spacing:.32em;color:#FFFFFF;text-shadow:0 0 8px rgba(255,255,255,0.4);}
+.nav-mid-sub{font-family:var(--fm);font-size:9px;letter-spacing:.18em;color:var(--g2);text-transform:uppercase;margin-top:0px;}
 .nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .live-tag{display:flex;align-items:center;gap:7px;font-family:var(--fm);font-size:11px;letter-spacing:.18em;color:var(--g2);text-transform:uppercase;background:var(--gdim);border:1px solid var(--bor2);padding:7px 15px}
 .ldot{width:8px;height:8px;border-radius:50%;background:#FFD060;box-shadow:0 0 10px rgba(255,208,96,.7);animation:blk 1.6s ease-in-out infinite}
@@ -129,8 +129,8 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:8001;o
 .pnl-compact .phc-s{font-family:var(--fm);font-size:10px;color:var(--mut3);margin-top:2px}
 .pnl-compact .pnl-verdict{padding:6px 9px;font-family:var(--fd);font-size:13px;letter-spacing:.1em;text-align:center;text-transform:uppercase;border-top:1px solid rgba(255,208,96,.1);flex-shrink:0}
 
-/* Nuevo estilo para el cuadrado animado (reemplazo completo) */
-.sq{width:240px;height:80px;background:#030010;border-radius:12px;overflow:hidden;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:1fr 1fr;gap:3px;padding:3px;cursor:pointer;}
+/* Nuevo estilo para el cuadrado animado - 8x2, ajustado al ancho de 310px */
+.sq{width:100%;max-width:310px;aspect-ratio:4/1;background:#030010;border-radius:12px;overflow:hidden;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:1fr 1fr;gap:3px;padding:3px;cursor:pointer;}
 .bulb{border-radius:6px;opacity:0.05;transition:opacity 0.35s ease,box-shadow 0.35s ease,background 0.35s ease;}
 
 #terminal{flex:0 0 auto;background:rgba(0,4,0,.93);border:1px solid var(--bor2);box-shadow:0 0 30px rgba(0,255,102,.1),inset 0 0 20px rgba(0,0,0,.8);backdrop-filter:blur(12px);display:flex;flex-direction:column;overflow:hidden;position:relative}
@@ -193,7 +193,8 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:8001;o
 .foc-price{font-family:var(--fd);font-size:36px;letter-spacing:.03em;line-height:1;color:#FFFFFF;text-shadow:0 0 16px rgba(255,255,255,.3)}
 .foc-mcap-inline{display:flex;align-items:baseline;gap:5px}
 .mcap-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.14em;color:var(--mut3);text-transform:uppercase}
-.mcap-val{font-family:var(--fd);font-size:24px;color:#FFE8A0;text-shadow:0 0 12px rgba(255,208,96,.5);line-height:1}
+/* MCAP más grande y mejor espaciado */
+.mcap-val{font-family:var(--fd);font-size:32px;color:#FFE8A0;text-shadow:0 0 12px rgba(255,208,96,.5);line-height:1;letter-spacing:.02em;}
 
 .drow{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin:0 16px 8px}
 .dc{background:rgba(0,255,102,.04);border:1px solid var(--bor);padding:6px 4px;text-align:center;position:relative;overflow:hidden}
@@ -248,7 +249,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:8001;o
 .ftl{font-family:var(--fm);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut3);text-decoration:none;transition:all .2s}
 .ftl:hover{color:var(--g);text-shadow:var(--gs)}
 
-@media(max-width:900px){#main{grid-template-columns:1fr}#sb{display:none}#bcol{grid-template-columns:1fr;padding:10px}#rightCol{display:none}.nav-mid,.ca-row{display:none}#topRank{display:none}#sleepStrip{height:36px}#sleepStrip .item{font-size:1.2rem}#sleepStrip .sleeper-strip{font-size:.9rem}.sq{width:180px;height:60px}}
+@media(max-width:900px){#main{grid-template-columns:1fr}#sb{display:none}#bcol{grid-template-columns:1fr;padding:10px}#rightCol{display:none}.nav-mid,.ca-row{display:none}#topRank{display:none}#sleepStrip{height:36px}#sleepStrip .item{font-size:1.2rem}#sleepStrip .sleeper-strip{font-size:.9rem}.sq{aspect-ratio:4/1;max-width:100%}}
 </style>
 </head>
 <body>
@@ -271,7 +272,8 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:8001;o
       <div><div class="nav-brand">$SLEEP</div><div class="nav-tagline">Bags.Fm Ecosystem Terminal · Solana</div></div>
     </div>
     <div class="nav-mid">
-      <div class="nav-mid-title">TOP ACTIVE COINS</div>
+      <div class="nav-mid-title">BAGS.FM</div>
+      <div class="nav-mid-sub">TOP ACTIVE COINS</div>
     </div>
     <div class="nav-right">
       <div class="live-tag"><div class="ldot"></div>Live Discovery</div>
@@ -317,7 +319,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:8001;o
           <div class="pnl-hero" id="pnlHero"></div>
           <div class="pnl-verdict" id="pnlVerdict"></div>
         </div>
-        <!-- Nuevo cuadrado animado (sin contenido interno) -->
+        <!-- Nuevo cuadrado animado con bulbos 8x2 -->
         <div class="sq" id="sq" onclick="nextMode()"></div>
         <div id="terminal">
           <div class="term-hd">
@@ -759,30 +761,30 @@ if("ResizeObserver" in window) new ResizeObserver(()=>{ W=cont.clientWidth; H=co
 
 setTimeout(hideLoader, 15000);
 
-// NUEVO CÓDIGO DEL CUADRADO ANIMADO (reemplazo completo)
-const P=['#8844ff','#3322cc','#ccaaff','#ffffff'];
+// NUEVO CÓDIGO DEL CUADRADO ANIMADO (8x2 con colores verde/azul)
+const P=['#00ff66','#00cc44','#aaffcc','#ffffff'];
 const sqDiv=document.getElementById('sq');
 const bulbs=[];
-for(let i=0;i<12;i++){const b=document.createElement('div');b.className='bulb';sqDiv.appendChild(b);bulbs.push(b);}
+for(let i=0;i<16;i++){const b=document.createElement('div');b.className='bulb';sqDiv.appendChild(b);bulbs.push(b);}
 
-const LEY={top:[1,2],bot:[7,8]};
-const REY={top:[3,4],bot:[9,10]};
+const LEY={top:[1,2],bot:[9,10]};
+const REY={top:[5,6],bot:[13,14]};
 
-function lit(i,c,v=1){bulbs[i].style.background=c;bulbs[i].style.opacity=String(0.05+v*0.95);bulbs[i].style.boxShadow=v>0.2?`0 0 ${v*16}px ${c},0 0 ${v*5}px ${c}`:'none';}
+function lit(i,c,v=1){if(i<0||i>15)return;bulbs[i].style.background=c;bulbs[i].style.opacity=String(0.05+v*0.95);bulbs[i].style.boxShadow=v>0.2?`0 0 ${v*16}px ${c},0 0 ${v*5}px ${c}`:'none';}
 function dim(i){bulbs[i].style.opacity='0.05';bulbs[i].style.boxShadow='none';}
-function dimAll(){for(let i=0;i<12;i++)dim(i);}
+function dimAll(){for(let i=0;i<16;i++)dim(i);}
 
 function modeEyes(){
   const frames=[
-    ()=>{dimAll();[...LEY.top,...LEY.bot,...REY.top,...REY.bot].forEach(i=>lit(i,P[2]));lit(2,P[0]);lit(4,P[0]);lit(8,P[0]);lit(10,P[0]);},
-    ()=>{dimAll();[...LEY.top,...LEY.bot,...REY.top,...REY.bot].forEach(i=>lit(i,P[2]));lit(2,P[0]);lit(4,P[0]);lit(8,P[0]);lit(10,P[0]);},
-    ()=>{dimAll();[...LEY.top,...LEY.bot,...REY.top,...REY.bot].forEach(i=>lit(i,P[2]));lit(2,P[0]);lit(4,P[0]);lit(8,P[0]);lit(10,P[0]);},
+    ()=>{dimAll();[...LEY.top,...LEY.bot,...REY.top,...REY.bot].forEach(i=>lit(i,P[2]));[2,6,10,14].forEach(i=>lit(i,P[0]));},
+    ()=>{dimAll();[...LEY.top,...LEY.bot,...REY.top,...REY.bot].forEach(i=>lit(i,P[2]));[2,6,10,14].forEach(i=>lit(i,P[0]));},
+    ()=>{dimAll();[...LEY.top,...LEY.bot,...REY.top,...REY.bot].forEach(i=>lit(i,P[2]));[2,6,10,14].forEach(i=>lit(i,P[0]));},
     ()=>{dimAll();[...LEY.top,...REY.top].forEach(i=>lit(i,P[2],0.7));[...LEY.bot,...REY.bot].forEach(i=>lit(i,P[1],0.2));},
-    ()=>{dimAll();[2,3].forEach(i=>lit(i,P[2],0.4));[8,9].forEach(i=>lit(i,P[1],0.15));},
-    ()=>{dimAll();[1,2,3,4].forEach(i=>lit(i,P[1],0.2));},
-    ()=>{dimAll();[1,4].forEach(i=>lit(i,P[1],0.12));},
-    ()=>{dimAll();[1,4].forEach(i=>lit(i,P[1],0.12));},
-    ()=>{dimAll();[2,3].forEach(i=>lit(i,P[2],0.4));[8,9].forEach(i=>lit(i,P[1],0.15));},
+    ()=>{dimAll();[2,5].forEach(i=>lit(i,P[2],0.4));[10,13].forEach(i=>lit(i,P[1],0.15));},
+    ()=>{dimAll();[1,2,5,6].forEach(i=>lit(i,P[1],0.2));},
+    ()=>{dimAll();[1,6].forEach(i=>lit(i,P[1],0.1));},
+    ()=>{dimAll();[1,6].forEach(i=>lit(i,P[1],0.1));},
+    ()=>{dimAll();[2,5].forEach(i=>lit(i,P[2],0.4));[10,13].forEach(i=>lit(i,P[1],0.15));},
     ()=>{dimAll();[...LEY.top,...REY.top].forEach(i=>lit(i,P[2],0.7));[...LEY.bot,...REY.bot].forEach(i=>lit(i,P[1],0.25));},
   ];
   let f=0;
@@ -790,26 +792,26 @@ function modeEyes(){
 }
 
 function modeZzz(){
-  const path=[0,1,2,3,4,5,11,10,9,8,7,6,6,7,8,9,10,11];
+  const path=[0,1,2,3,4,5,6,7,15,14,13,12,11,10,9,8,8,9,10,11,12,13,14,15];
   let s=0;
   return setInterval(()=>{
     dimAll();
     const i=path[s%path.length];
-    lit(i,P[s%2===0?0:2]);
-    if(s>0)lit(path[(s-1+path.length)%path.length],P[0],0.25);
+    lit(i,P[s%2===0?0:3]);
+    if(s>0)lit(path[(s-1+path.length)%path.length],P[1],0.25);
     s++;
   },110);
 }
 
 function modeStars(){
-  const state=new Float32Array(12);
-  const target=new Float32Array(12);
-  const cols=Array(12).fill(0).map(()=>P[Math.floor(Math.random()*4)]);
+  const state=new Float32Array(16);
+  const target=new Float32Array(16);
+  const cols=Array(16).fill(0).map(()=>P[Math.floor(Math.random()*4)]);
   function newTargets(){target.forEach((_,i)=>target[i]=Math.random()<0.35?0.1+Math.random()*0.9:0.04);}
   newTargets();
   let t=0;
   return setInterval(()=>{
-    for(let i=0;i<12;i++){
+    for(let i=0;i<16;i++){
       state[i]+=(target[i]-state[i])*0.12;
       if(state[i]>0.08)lit(i,cols[i],state[i]);
       else dim(i);
@@ -823,20 +825,20 @@ function modeDrift(){
   let pos=0,row=0,ci=0;
   return setInterval(()=>{
     dimAll();
-    const cur=row*6+pos;
-    lit(cur,P[ci%4]);
-    if(pos>0)lit(row*6+pos-1,P[ci%4],0.22);
-    pos++;if(pos>=6){pos=0;row=1-row;if(row===0)ci++;}
+    const cur=row*8+pos;
+    lit(cur,P[ci%2===0?0:3]);
+    if(pos>0)lit(row*8+pos-1,P[0],0.22);
+    pos++;if(pos>=8){pos=0;row=1-row;if(row===0)ci++;}
   },130);
 }
 
 function modeBreathe(){
   let t=0;
   return setInterval(()=>{
-    for(let i=0;i<12;i++){
-      const phase=(t*0.06)+(i%6)*0.3+(Math.floor(i/6)*0.8);
+    for(let i=0;i<16;i++){
+      const phase=(t*0.06)+(i%8)*0.25+(Math.floor(i/8)*0.8);
       const v=0.35+0.65*(0.5+0.5*Math.sin(phase));
-      lit(i,P[i<6?0:1],v*0.8);
+      lit(i,P[i<8?0:3],v*0.8);
     }
     t++;
   },55);
