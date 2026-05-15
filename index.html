@@ -236,13 +236,15 @@
             }
         }
 
+        /* Logo 4 veces más grande */
         .l-moon {
-            width: 90px;
+            width: 360px;
             height: auto;
             filter: drop-shadow(0 0 20px var(--g));
             animation: mnp 3s ease-in-out infinite;
             z-index: 1;
-            position: relative
+            position: relative;
+            max-width: 80vw;
         }
 
         .l-slogan {
@@ -360,11 +362,12 @@
             }
         }
 
+        /* $SLEEP en blanco arriba izquierda */
         .nav-brand {
             font-family: var(--fd);
             font-size: 34px;
             letter-spacing: .14em;
-            color: var(--g);
+            color: #FFFFFF;
             text-shadow: var(--gm);
             line-height: 1
         }
@@ -388,11 +391,12 @@
             gap: 2px
         }
 
+        /* BAGS.FM TOP ACTIVE COINS en blanco */
         .nav-mid-title {
             font-family: var(--fd);
             font-size: 20px;
             letter-spacing: .32em;
-            color: var(--g);
+            color: #FFFFFF;
             text-shadow: var(--gs)
         }
 
@@ -2180,13 +2184,14 @@
                 letter-spacing: .1em;
             }
 
-            /* Loader mobile */
+            /* Loader mobile: logo más grande pero adaptado */
             .l-brand {
                 font-size: 70px;
             }
 
             .l-moon {
-                width: 55px;
+                width: 70vw;
+                max-width: 320px;
             }
 
             .l-slogan {
@@ -2370,7 +2375,7 @@
                 <div class="live-tag"><div class="ldot"></div>Live Discovery</div>
                 <div class="ca-row">
                     <span class="ca-lbl">CA</span>
-                    <span class="ca-val" id="caV">UPDATE ASAP</span>
+                    <span class="ca-val" id="caV">UPDATE AFTER LAUNCH!</span>
                     <button class="ca-btn" id="caB">Copy</button>
                 </div>
             </div>
@@ -2521,8 +2526,7 @@
         </footer>
     </div>
 
-    <script src="https://d3js.org/d3.v7.min.js">
-    </script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
         (async function() {
             'use strict';
@@ -2530,10 +2534,13 @@
             document.getElementById('caB').addEventListener('click', async function() {
                 try {
                     const addr = document.getElementById('caV').textContent.trim();
-                    if (addr && addr.length > 10) {
+                    if (addr && addr.length > 10 && addr !== "UPDATE AFTER LAUNCH!") {
                         await navigator.clipboard.writeText(addr);
                         this.textContent = 'Copied!';
                         setTimeout(() => this.textContent = 'Copy', 2000);
+                    } else {
+                        this.textContent = 'No CA';
+                        setTimeout(() => this.textContent = 'Copy', 1500);
                     }
                 } catch (e) {
                     this.textContent = 'Failed';
