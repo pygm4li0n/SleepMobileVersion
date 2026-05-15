@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <title>$SLEEP | Bags.Fm Terminal — Sleep on Bags</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
 <style>
@@ -62,7 +62,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:8001;o
 .nav-tagline{font-family:var(--fm);font-size:11px;letter-spacing:.22em;color:var(--mut3);text-transform:uppercase;margin-top:2px}
 .nav-mid{position:absolute;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px}
 .nav-mid-title{font-family:var(--fd);font-size:20px;letter-spacing:.32em;color:var(--g);text-shadow:var(--gs)}
-.nav-mid-sub{display:none}
 .nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .live-tag{display:flex;align-items:center;gap:7px;font-family:var(--fm);font-size:11px;letter-spacing:.18em;color:var(--g2);text-transform:uppercase;background:var(--gdim);border:1px solid var(--bor2);padding:7px 15px}
 .ldot{width:8px;height:8px;border-radius:50%;background:#FFD060;box-shadow:0 0 10px rgba(255,208,96,.7);animation:blk 1.6s ease-in-out infinite}
@@ -104,152 +103,96 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:8001;o
 
 #rightCol{display:flex;flex-direction:column;gap:8px;min-height:0;overflow:hidden}
 
-.pnl-compact{flex:0 0 auto;display:flex;flex-direction:column;background:rgba(0,6,0,.85);border:1px solid var(--bor2);box-shadow:0 0 28px rgba(0,255,102,.1),inset 0 0 20px rgba(0,0,0,.7);position:relative;overflow:hidden}
-.pnl-compact::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);box-shadow:0 0 10px rgba(255,208,96,.35);z-index:1}
-.pnl-compact .pnl-hd{padding:6px 9px 5px;border-bottom:1px solid rgba(255,208,96,.12);user-select:none;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:rgba(255,208,96,.02)}
-.pnl-compact .pnl-hd-l{display:flex;align-items:center;gap:6px}
-.pnl-compact .pnl-icon{font-size:20px;filter:drop-shadow(0 0 6px var(--gold))}
-.pnl-compact .pnl-title{font-family:var(--fd);font-size:16px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;line-height:1}
-.pnl-compact .pnl-sub{font-family:var(--fm);font-size:10px;letter-spacing:.12em;color:var(--mut3);text-transform:uppercase}
-.pnl-compact .pnl-inp-row{display:flex;align-items:center;gap:4px;padding:5px 9px;border-bottom:1px solid rgba(255,208,96,.1);background:rgba(255,208,96,.02);flex-shrink:0;flex-wrap:wrap}
-.pnl-compact .pnl-inp-lbl{font-family:var(--fm);font-size:10px;letter-spacing:.14em;color:var(--mut3);text-transform:uppercase;white-space:nowrap}
-.pnl-compact .pnl-suf{font-family:var(--fm);font-size:11px;color:var(--gold)}
-.pnl-compact .pnl-inp{font-family:var(--fm);font-size:11px;letter-spacing:.08em;background:rgba(255,208,96,.06);border:1px solid rgba(255,208,96,.25);color:var(--gold);padding:4px 7px;width:52px;outline:none;transition:border-color .2s;text-align:right}
-.pnl-compact .pnl-inp:focus{border-color:rgba(255,208,96,.6);box-shadow:0 0 8px rgba(255,208,96,.2)}
-.pnl-compact .pnl-calc{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,208,96,.1);border:1px solid rgba(255,208,96,.3);color:var(--gold);padding:4px 8px;cursor:pointer;transition:all .2s;margin-left:auto}
-.pnl-compact .pnl-calc:hover{background:rgba(255,208,96,.22);border-color:rgba(255,208,96,.6);box-shadow:0 0 10px rgba(255,208,96,.3)}
-.pnl-compact .pnl-hero{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid rgba(255,208,96,.1);flex-shrink:0}
-.pnl-compact .phc{padding:8px 3px;text-align:center;border-right:1px solid rgba(255,208,96,.1)}
-.pnl-compact .phc:last-child{border:none}
-.pnl-compact .phc-l{font-family:var(--fm);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut3)}
-.pnl-compact .phc-v{font-family:var(--fd);font-size:18px;letter-spacing:.04em;line-height:1;margin-top:4px}
-.pnl-compact .phc-v.pos{color:var(--g);text-shadow:var(--gs)}
-.pnl-compact .phc-v.neg{color:var(--red);text-shadow:var(--rs)}
-.pnl-compact .phc-v.gold{color:var(--gold);text-shadow:0 0 10px rgba(255,208,96,.4)}
-.pnl-compact .phc-s{font-family:var(--fm);font-size:10px;color:var(--mut3);margin-top:2px}
-.pnl-compact .pnl-verdict{padding:6px 9px;font-family:var(--fd);font-size:13px;letter-spacing:.1em;text-align:center;text-transform:uppercase;border-top:1px solid rgba(255,208,96,.1);flex-shrink:0}
+/* compact panels, square, terminal – hidden on mobile */
+.pnl-compact,.sq,#terminal{display:flex;}
 
-.sq{position:relative;width:100%;aspect-ratio:3/1;background:#000;border-radius:12px;overflow:hidden;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:1fr 1fr;gap:3px;padding:3px;cursor:pointer;flex-shrink:0}
-.sq-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--fd);font-size:17px;letter-spacing:0.1em;color:#00ff66;text-shadow:0 0 10px #00ff66;z-index:5;pointer-events:none;white-space:nowrap}
-.sq-label a{color:#ffffff;text-decoration:none;pointer-events:auto;transition:all 0.2s}
-.sq-label a:hover{text-shadow:0 0 16px #ffffff,0 0 30px #ffffff}
-.bulb{border-radius:6px;opacity:0.08;aspect-ratio:1;transition:opacity 0.12s, box-shadow 0.12s;}
+#statsbar,#sleepStrip,#footer{display:flex;}
 
-#terminal{flex:0 0 auto;background:rgba(0,4,0,.93);border:1px solid var(--bor2);box-shadow:0 0 30px rgba(0,255,102,.1),inset 0 0 20px rgba(0,0,0,.8);backdrop-filter:blur(12px);display:flex;flex-direction:column;overflow:hidden;position:relative}
-#terminal::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--g),transparent);box-shadow:var(--gs);z-index:1}
-.term-hd{display:flex;align-items:center;justify-content:space-between;padding:5px 9px 4px;border-bottom:1px solid var(--bor);background:rgba(0,255,102,.04);flex-shrink:0}
-.term-hd-l{display:flex;align-items:center;gap:5px}
-.term-dot{width:6px;height:6px;border-radius:50%}
-.td1{background:#FF5F57}.td2{background:#FFBD2E}.td3{background:var(--g);box-shadow:0 0 5px var(--g)}
-.term-title{font-family:var(--fm);font-size:10px;letter-spacing:.18em;color:var(--g2);text-transform:uppercase;margin-left:3px}
-.term-st{display:flex;align-items:center;gap:4px;font-family:var(--fm);font-size:10px;letter-spacing:.1em;color:var(--mut3);text-transform:uppercase}
-.term-st-dot{width:4px;height:4px;border-radius:50%;background:var(--g);box-shadow:var(--gs);animation:blk 1.6s ease-in-out infinite}
-.term-body{flex:0 0 auto;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;position:relative;padding:5px 9px 6px;min-height:0}
-.term-body::before{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.2) 2px,rgba(0,0,0,.2) 3px);z-index:1}
-.term-lines{display:flex;flex-direction:column;gap:1px;position:relative;z-index:2}
-.tl{font-family:var(--fm);font-size:10px;letter-spacing:.08em;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;animation:tlfade .3s ease}
-@keyframes tlfade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
-.tl-p{color:var(--mut3)}.tl-c{color:var(--g2)}.tl-ok{color:var(--g)}.tl-w{color:#FFD060}.tl-e{color:var(--red)}.tl-sl{color:var(--g3)}.tl-d{color:var(--cream2)}.tl-dim{color:var(--mut3)}
-.tcrsr{display:inline-block;width:6px;height:10px;background:var(--g);vertical-align:middle;animation:tcrsr .75s step-end infinite;box-shadow:var(--gs);margin-left:2px}
-@keyframes tcrsr{0%,100%{opacity:1}50%{opacity:0}}
+/* ---------- MOBILE FIRST ADAPTATION (clean bubbles only) ---------- */
+@media(max-width:900px){
+  /* hide all extra data panels and footers */
+  #sb, #rightCol, #statsbar, #sleepStrip, #footer {
+    display: none !important;
+  }
+  /* re-define app grid: only navbar and main area (bubbles container) */
+  #app {
+    grid-template-rows: 60px 1fr !important;
+  }
+  /* main area becomes single column, full width */
+  #main {
+    grid-template-columns: 1fr !important;
+  }
+  /* bcol becomes single column, full height, no extra grid column */
+  #bcol {
+    grid-template-columns: 1fr !important;
+    padding: 8px 6px 6px 6px !important;
+    gap: 6px !important;
+  }
+  /* topbar: keep timeframes and rank? but we hide rank on mobile anyway */
+  #topbar {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .period-grp {
+    margin-right: auto;
+  }
+  /* hide topRank on mobile because it's extra data (user wants only bubbles + timeframes + logo) */
+  #topRank {
+    display: none !important;
+  }
+  /* bubble container takes all remaining space */
+  #bwrap {
+    min-height: 65vh;
+    height: auto;
+    flex: 1;
+  }
+  /* adjust corner decals */
+  .ft1 { font-size: 8px; top: 8px; right: 10px; }
+  .ft2 { font-size: 42px; bottom: 8px; left: 8px; }
+  /* nav adjustments: keep logo visible, hide unnecessary right items */
+  .nav-right .live-tag, .nav-right .ca-row {
+    display: none !important;
+  }
+  .nav-mid {
+    display: none !important;
+  }
+  .nav-logo {
+    gap: 8px;
+  }
+  .nav-brand {
+    font-size: 26px;
+  }
+  .nav-tagline {
+    font-size: 8px;
+  }
+  .nav-moon {
+    width: 34px;
+  }
+  /* ensure the bubble canvas fills correctly */
+  #cont {
+    width: 100%;
+    height: 100%;
+  }
+  /* make sure bubbles are rendered with correct dimensions */
+  #bwrap {
+    width: 100%;
+    aspect-ratio: 1 / 0.9;
+  }
+  body {
+    overflow: hidden;
+  }
+}
 
-#sleepStrip{background:#000;width:100%;height:44px;overflow:hidden;display:flex;align-items:center;position:relative;cursor:pointer;flex-shrink:0;border-top:1px solid var(--bor);border-bottom:1px solid var(--bor)}
-#sleepStrip .track{display:flex;align-items:center;white-space:nowrap;animation:scroll 18s linear infinite;will-change:transform}
-#sleepStrip:hover .track{animation-play-state:paused}
-@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-#sleepStrip .item{display:inline-flex;align-items:center;font-size:1.5rem;padding:0 6px;filter:drop-shadow(0 0 6px #00ff66)}
-#sleepStrip .sleeper-strip{display:inline-flex;align-items:center;gap:3px;padding:0 8px;font-size:1.1rem;color:#00ff66;text-shadow:0 0 8px #00ff66;font-family:var(--fm);font-weight:bold;letter-spacing:1px;animation:zzzbob 2s ease-in-out infinite}
-@keyframes zzzbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
-#sleepStrip .dot{display:inline-block;width:5px;height:5px;background:#00ff66;border-radius:50%;margin:0 10px;box-shadow:0 0 6px #00ff66;flex-shrink:0}
-
-#sb{display:flex;flex-direction:column;background:rgba(2,7,2,.98);border-left:2px solid var(--bor2);overflow:hidden;min-height:0}
-.sb-glow{flex-shrink:0;height:2px;background:linear-gradient(90deg,transparent,var(--g),transparent);box-shadow:var(--gm)}
-.sb-hd{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:12px 18px 10px;border-bottom:1px solid var(--bor)}
-.sb-hd-l{display:flex;align-items:center;gap:10px}
-.sb-moon{width:42px;height:auto;filter:drop-shadow(0 0 14px var(--g));animation:mnp 3.5s 1s ease-in-out infinite}
-.sb-title{font-family:var(--fd);font-size:28px;letter-spacing:.08em;color:var(--g);text-shadow:var(--gm);line-height:1}
-.sb-sub{font-family:var(--fm);font-size:10px;letter-spacing:.18em;color:var(--mut3);text-transform:uppercase;margin-top:2px}
-.sb-ts{font-family:var(--fm);font-size:10px;letter-spacing:.1em;color:var(--g2);background:var(--gdim);border:1px solid var(--bor2);padding:5px 10px;text-transform:uppercase;white-space:nowrap}
-
-.sb-sum{flex-shrink:0;display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--bor)}
-.sc{padding:8px 10px;text-align:center;border-right:1px solid var(--bor)}
-.sc:last-child{border:none}
-.sc-l{font-family:var(--fm);font-size:10px;letter-spacing:.18em;color:var(--mut3);text-transform:uppercase}
-.sc-v{font-family:var(--fd);font-size:22px;letter-spacing:.04em;color:#FFE8A0;text-shadow:0 0 18px rgba(255,208,96,.55),0 0 40px rgba(255,208,96,.25);line-height:1;margin-top:3px}
-.sc-s{font-family:var(--fm);font-size:10px;color:var(--mut3);margin-top:2px}
-
-.sb-foc{flex:1;overflow-y:auto;display:flex;flex-direction:column;border-bottom:1px solid var(--bor);background:rgba(0,255,102,.02)}
-.sb-foc::-webkit-scrollbar{width:3px}
-.sb-foc::-webkit-scrollbar-thumb{background:var(--bor2)}
-.foc-topline{height:1px;background:linear-gradient(90deg,transparent,var(--g),transparent);box-shadow:var(--gs);flex-shrink:0}
-.foc-content{padding:10px 16px 5px;display:flex;flex-direction:column;gap:4px}
-.foc-hd{display:flex;align-items:center;gap:10px}
-.foc-logo{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--bor2);background:var(--mut2);flex-shrink:0;box-shadow:0 0 10px rgba(0,255,102,.22)}
-.foc-ticker{font-family:var(--fd);font-size:28px;letter-spacing:.06em;color:var(--g);text-shadow:var(--gm);line-height:.95}
-.foc-name{font-family:var(--fb);font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--cream2)}
-.foc-addr{font-family:var(--fm);font-size:10px;letter-spacing:.06em;color:var(--mut3)}
-.foc-addr .copy-addr-btn{cursor:pointer;display:inline-block;margin-left:5px;font-size:14px;transition:all .2s}
-.foc-addr .copy-addr-btn:hover{transform:scale(1.1)}
-.foc-price-row{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
-.foc-price{font-family:var(--fd);font-size:36px;letter-spacing:.03em;line-height:1;color:#FFFFFF;text-shadow:0 0 16px rgba(255,255,255,.3)}
-.foc-mcap-inline{display:flex;align-items:baseline;gap:5px}
-.mcap-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.14em;color:var(--mut3);text-transform:uppercase}
-.mcap-val{font-family:var(--fd);font-size:24px;color:#FFE8A0;text-shadow:0 0 12px rgba(255,208,96,.5);line-height:1}
-
-.drow{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin:0 16px 8px}
-.dc{background:rgba(0,255,102,.04);border:1px solid var(--bor);padding:6px 4px;text-align:center;position:relative;overflow:hidden}
-.dc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
-.dc.pos::before{background:linear-gradient(90deg,transparent,var(--g),transparent)}
-.dc.neg::before{background:linear-gradient(90deg,transparent,var(--red),transparent)}
-.dc-l{font-family:var(--fm);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut3)}
-.dc-v{font-family:var(--fd);font-size:20px;letter-spacing:.03em;margin-top:3px;line-height:1}
-.vzb{display:flex;flex-direction:column;gap:4px;margin:0 16px 6px}
-.vr{display:grid;grid-template-columns:36px 1fr 46px;gap:5px;align-items:center}
-.vl{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut3)}
-.vt{height:4px;background:var(--mut2);overflow:hidden}
-.vf{height:100%;background:linear-gradient(90deg,var(--g2),var(--g));box-shadow:0 0 6px rgba(0,255,102,.35);transition:width .55s ease}
-.vv{font-family:var(--fm);font-size:10px;color:var(--g2);text-align:right}
-.core{background:rgba(0,255,102,.04);border:1px solid var(--bor2);padding:8px 10px;margin:0 16px 8px}
-.core-l{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut3)}
-.core-v{font-family:var(--fd);font-size:24px;letter-spacing:.05em;color:var(--g);text-shadow:var(--gs);line-height:1;margin-top:2px}
-.core-s{font-family:var(--fm);font-size:10px;color:var(--mut3);margin-top:3px;line-height:1.5}
-.flinks{display:flex;gap:5px;flex-wrap:wrap;padding:0 16px 10px}
-.fl{font-family:var(--fm);font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border:1px solid var(--bor2);color:var(--g2);text-decoration:none;transition:all .2s}
-.fl:hover{background:var(--gdim);border-color:var(--bor3);color:var(--g);box-shadow:var(--gs)}
-
-#statsbar{display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:rgba(2,6,2,.97);border-top:1px solid var(--bor2);border-bottom:1px solid var(--bor);gap:6px;overflow:hidden;position:relative;z-index:10}
-#statsbar::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--g),transparent);box-shadow:var(--gs)}
-.eco-lbl{font-family:var(--fd);font-size:12px;letter-spacing:.3em;color:var(--mut3);text-transform:uppercase;flex-shrink:0;border-right:1px solid var(--bor);padding-right:14px;margin-right:4px}
-.stats-grid{display:flex;align-items:center;gap:6px;flex:1;overflow:hidden}
-.stat-pill{display:flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--bor);background:rgba(0,255,102,.03);flex:1;min-width:0;position:relative;overflow:hidden}
-.stat-pill::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
-.gp::before{background:linear-gradient(90deg,transparent,var(--g),transparent)}
-.rp::before{background:linear-gradient(90deg,transparent,var(--red),transparent)}
-.golp::before{background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.tealp::before{background:linear-gradient(90deg,transparent,#00FFEE,transparent)}
-.sp-icon{font-size:18px;flex-shrink:0}
-.sp-body{display:flex;flex-direction:column;min-width:0}
-.sp-lbl{font-family:var(--fm);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut3);white-space:nowrap}
-.sp-val{font-family:var(--fd);font-size:22px;letter-spacing:.06em;line-height:1;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sp-val.sv-g{color:var(--g);text-shadow:var(--gs)}
-.sp-val.sv-r{color:var(--red);text-shadow:var(--rs)}
-.sp-val.sv-gold{color:var(--gold);text-shadow:0 0 14px rgba(255,208,96,.45)}
-.sp-val.sv-teal{color:#00FFEE;text-shadow:0 0 14px rgba(0,255,238,.45)}
-.sp-val.sv-w{color:var(--cream)}
-.sp-sub{font-family:var(--fm);font-size:10px;color:var(--mut3);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.stat-div{width:1px;height:48px;background:var(--bor);flex-shrink:0}
-
-#footer{display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:rgba(1,3,1,.98);border-top:1px solid var(--bor);box-shadow:0 -4px 40px rgba(0,0,0,.6);flex-shrink:0;position:relative}
-#footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--g),transparent);opacity:.45}
-.ft-l{display:flex;align-items:center;gap:12px}
-.ft-logo{font-family:var(--fd);font-size:24px;letter-spacing:.18em;color:var(--g);text-shadow:var(--gm)}
-.ft-tag{font-family:var(--fm);font-size:11px;letter-spacing:.2em;color:var(--mut3);text-transform:uppercase}
-.ft-st{font-family:var(--fm);font-size:11px;letter-spacing:.12em;color:var(--mut3);text-transform:uppercase;max-width:420px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ftlks{display:flex;gap:18px}
-.ftl{font-family:var(--fm);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut3);text-decoration:none;transition:all .2s}
-.ftl:hover{color:var(--g);text-shadow:var(--gs)}
-
-@media(max-width:900px){#main{grid-template-columns:1fr}#sb{display:none}#bcol{grid-template-columns:1fr;padding:10px}#rightCol{display:none}.nav-mid,.ca-row{display:none}#topRank{display:none}#sleepStrip{height:36px}#sleepStrip .item{font-size:1.2rem}#sleepStrip .sleeper-strip{font-size:.9rem}.sq{aspect-ratio:3/1}}
+/* For very small devices ensure bubbles are touch-friendly */
+@media(max-width: 480px) {
+  #bwrap {
+    aspect-ratio: 1 / 1;
+  }
+  .pbtn {
+    padding: 5px 12px;
+    font-size: 10px;
+  }
+}
 </style>
 </head>
 <body>
@@ -269,7 +212,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:8001;o
   <nav id="nav">
     <div class="nav-logo">
       <img src="https://i.postimg.cc/y8QJTdCw/Chat-GPT-Image-14-may-2026-22-32-42-(1).png" class="nav-moon" alt="SLEEP logo">
-      <div><div class="nav-brand">$SLEEP</div><div class="nav-tagline">Bags.Fm Ecosystem Terminal · Solana</div></div>
+      <div><div class="nav-brand">$SLEEP</div><div class="nav-tagline">Bags.Fm Ecosystem · Solana</div></div>
     </div>
     <div class="nav-mid">
       <div class="nav-mid-title">BAGS.FM TOP ACTIVE COINS</div>
@@ -301,6 +244,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:8001;o
           <svg id="svg"></svg>
         </div>
       </div>
+      <!-- rightCol is hidden on mobile, kept for desktop functionality -->
       <div id="rightCol">
         <div class="pnl-compact" id="pnlPanel">
           <div class="pnl-hd">
@@ -450,7 +394,7 @@ let minR=26, maxR=122, pad=8;
 const STR=0.000065, SPD=1.5;
 
 const isMob=()=>window.innerWidth<=900;
-const adjVP=()=>{ minR=isMob()?17:26; maxR=isMob()?76:122; pad=isMob()?10:8; };
+const adjVP=()=>{ minR=isMob()?19:26; maxR=isMob()?82:122; pad=isMob()?8:8; };
 
 const fc=n=>{ if(!Number.isFinite(n)||n===0)return"--"; if(n>=1e9)return"$"+(n/1e9).toFixed(2)+"B"; if(n>=1e6)return"$"+(n/1e6).toFixed(2)+"M"; if(n>=1e3)return"$"+(n/1e3).toFixed(1)+"K"; if(n>=1)return"$"+n.toFixed(4); return"$"+n.toFixed(8); };
 const fcp=n=>{ if(!Number.isFinite(n))return"--"; return new Intl.NumberFormat("en-US",{notation:"compact",maximumFractionDigits:2}).format(n); };
@@ -763,16 +707,15 @@ if("ResizeObserver" in window) new ResizeObserver(()=>{ W=cont.clientWidth; H=co
 
 setTimeout(hideLoader, 15000);
 
-// ========== CALMER & SLOWER ANIMATED SQUARE (BULBS) ==========
+// Calm animated square (slower, soft purple/rose/green/orange)
 (function(){
-  const palette = ['#a569bd', '#f5b7b1', '#6cbb8a', '#f4a261']; // purple, soft rose, sage green, calm orange
+  const palette = ['#a569bd', '#f5b7b1', '#6cbb8a', '#f4a261'];
   const sq = document.getElementById('sq');
   const bulbs = [];
   for(let i = 0; i < 12; i++){ const b = document.createElement('div'); b.className = 'bulb'; sq.appendChild(b); bulbs.push(b); }
   function light(i,c){ bulbs[i].style.background = c; bulbs[i].style.boxShadow = `0 0 18px ${c}, 0 0 4px ${c}`; bulbs[i].style.opacity = '0.9'; }
   function dim(i){ bulbs[i].style.opacity = '0.045'; bulbs[i].style.boxShadow = 'none'; }
   function dimAll(){ for(let i=0;i<12;i++) dim(i); }
-  // All intervals increased ~ 2x for slow, calm transition
   function modeChase(){ let col = 0, tick = 0; return setInterval(() => { dimAll(); light(col, palette[tick % 2 === 0 ? 0 : 1]); light(col+6, palette[tick % 2 === 0 ? 2 : 3]); col = (col+1) % 6; tick++; }, 680); }
   function modeStrobe(){ const pairs = [[0,7],[1,6],[2,9],[3,8],[4,11],[5,10]]; let p = 0; return setInterval(() => { dimAll(); const [a,b] = pairs[p % 6]; light(a, palette[p % 4]); light(b, palette[(p+2) % 4]); p++; }, 860); }
   function modeRipple(){ const order = [[2,3],[1,4],[0,5]]; let s = 0; return setInterval(() => { dimAll(); order[s % 3].forEach(c => { light(c, palette[s % 4]); light(c+6, palette[s % 4]); }); s++; }, 900); }
@@ -783,34 +726,23 @@ setTimeout(hideLoader, 15000);
   window.nextMode = function(){ clearInterval(current); dimAll(); idx = (idx+1) % 5; current = modes[idx](); };
 })();
 
-// Terminal
+// Terminal (cosmetic, but works)
 (function initTerminal(){
   const MAX=6;
   const lines=document.getElementById('termLines');
   if(!lines) return;
   const MSGS=[
-    {c:'tl-sl',t:'> ZZZ... monitoring ecosystem... 😴'},
-    {c:'tl-dim',t:'> scanning bags.fm contracts... 🌙'},
-    {c:'tl-ok',t:'> all systems nominal. sleeping. 💤'},
-    {c:'tl-sl',t:'> true degens rest easy. 🛌'},
-    {c:'tl-w',t:'> volatility detected. staying calm. 🧘'},
-    {c:'tl-ok',t:'> bags secured. vibes: immaculate. ✨'},
-    {c:'tl-sl',t:'> you cannot panic sell while asleep. 😌'},
-    {c:'tl-dim',t:'> liquidity pools: stable. 🌊'},
-    {c:'tl-ok',t:'> gains mode: activated. 🚀'},
-    {c:'tl-sl',t:'> sleeping through the dip like a pro. 😎'},
-    {c:'tl-w',t:'> red candle? was asleep. missed it. 🕯️'},
-    {c:'tl-ok',t:'> diamond pillow hands: confirmed. 💎'},
-    {c:'tl-sl',t:'> bags packed. eyes closed. gm. ☕'},
-    {c:'tl-dim',t:'> running signal analysis... 📡'},
-    {c:'tl-ok',t:'> ecosystem healthy. continue sleeping. 🌿'},
-    {c:'tl-w',t:'> market noise detected. ignoring. 🔕'},
-    {c:'tl-sl',t:'> moon trajectory: still up. 🌕'},
-    {c:'tl-ok',t:'> portfolio check: passed. back to sleep. 💼'},
-    {c:'tl-dim',t:'> refreshing pair data from dexscreener... 🔄'},
-    {c:'tl-sl',t:'> SLEEP protocol: phase 2. deep sleep. 💤'},
-    {c:'tl-ok',t:'> on-chain vibes: legendary. 🏆'},
-    {c:'tl-w',t:'> price action: irrelevant to sleepers. 📉😴'},
+    {c:'tl-sl',t:'> ZZZ... monitoring ecosystem... 😴'},{c:'tl-dim',t:'> scanning bags.fm contracts... 🌙'},
+    {c:'tl-ok',t:'> all systems nominal. sleeping. 💤'},{c:'tl-sl',t:'> true degens rest easy. 🛌'},
+    {c:'tl-w',t:'> volatility detected. staying calm. 🧘'},{c:'tl-ok',t:'> bags secured. vibes: immaculate. ✨'},
+    {c:'tl-sl',t:'> you cannot panic sell while asleep. 😌'},{c:'tl-dim',t:'> liquidity pools: stable. 🌊'},
+    {c:'tl-ok',t:'> gains mode: activated. 🚀'},{c:'tl-sl',t:'> sleeping through the dip like a pro. 😎'},
+    {c:'tl-w',t:'> red candle? was asleep. missed it. 🕯️'},{c:'tl-ok',t:'> diamond pillow hands: confirmed. 💎'},
+    {c:'tl-sl',t:'> bags packed. eyes closed. gm. ☕'},{c:'tl-dim',t:'> running signal analysis... 📡'},
+    {c:'tl-ok',t:'> ecosystem healthy. continue sleeping. 🌿'},{c:'tl-w',t:'> market noise detected. ignoring. 🔕'},
+    {c:'tl-sl',t:'> moon trajectory: still up. 🌕'},{c:'tl-ok',t:'> portfolio check: passed. back to sleep. 💼'},
+    {c:'tl-dim',t:'> refreshing pair data from dexscreener... 🔄'},{c:'tl-sl',t:'> SLEEP protocol: phase 2. deep sleep. 💤'},
+    {c:'tl-ok',t:'> on-chain vibes: legendary. 🏆'},{c:'tl-w',t:'> price action: irrelevant to sleepers. 📉😴'},
   ];
   let mIdx=0;
   function addLine(cls,text){
@@ -850,12 +782,9 @@ setTimeout(hideLoader, 15000);
     }
   }
   const boot=[
-    [350,'tl-dim','> SLEEP_AGENT v2.1 booting... 💤'],
-    [850,'tl-ok','> connected to dexscreener api 🔌'],
-    [1500,'tl-sl','> bags.fm filter: active 🌙'],
-    [2200,'tl-dim','> scanning contracts ending in bags 🔍'],
-    [3100,'tl-ok','> ecosystem lock-in: confirmed ✅'],
-    [4000,'tl-sl','> entering deep monitoring mode... 😴'],
+    [350,'tl-dim','> SLEEP_AGENT v2.1 booting... 💤'],[850,'tl-ok','> connected to dexscreener api 🔌'],
+    [1500,'tl-sl','> bags.fm filter: active 🌙'],[2200,'tl-dim','> scanning contracts ending in bags 🔍'],
+    [3100,'tl-ok','> ecosystem lock-in: confirmed ✅'],[4000,'tl-sl','> entering deep monitoring mode... 😴'],
     [5000,'tl-ok','> ZZZ... agent fully awake. ironic. 🤖'],
   ];
   boot.forEach(([delay,cls,text])=>setTimeout(()=>addLine(cls,text),delay));
