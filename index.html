@@ -13,7 +13,6 @@
             margin: 0;
             padding: 0;
         }
-
         :root {
             --bg: #010301;
             --g: #00FF66;
@@ -41,12 +40,8 @@
             --gl: 0 0 48px rgba(0, 255, 102, .65), 0 0 120px rgba(0, 255, 102, .22);
             --gxl: 0 0 70px rgba(0, 255, 102, .8), 0 0 180px rgba(0, 255, 102, .3);
             --rs: 0 0 14px rgba(255, 34, 85, .45);
+            --star-glow: 0 0 20px rgba(0, 255, 102, 0.9), 0 0 60px rgba(0, 255, 102, 0.5);
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: var(--fb);
             color: var(--cream);
@@ -56,7 +51,6 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-
         body::before {
             content: '';
             position: fixed;
@@ -65,7 +59,6 @@
             z-index: 8000;
             background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 255, 102, .016) 3px, rgba(0, 255, 102, .016) 4px);
         }
-
         body::after {
             content: '';
             position: fixed;
@@ -75,7 +68,6 @@
             opacity: .38;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
         }
-
         .amb {
             position: fixed;
             border-radius: 50%;
@@ -83,1135 +75,193 @@
             filter: blur(110px);
             z-index: 0;
         }
-        .a1 {
-            width: 900px;
-            height: 900px;
-            background: var(--g);
-            top: -320px;
-            left: -280px;
-            opacity: .028;
-            animation: aa1 16s ease-in-out infinite;
-        }
-        .a2 {
-            width: 700px;
-            height: 700px;
-            background: var(--g2);
-            bottom: -260px;
-            right: -200px;
-            opacity: .035;
-            animation: aa2 20s ease-in-out infinite;
-        }
-        .a3 {
-            width: 500px;
-            height: 500px;
-            background: var(--g4);
-            top: 45%;
-            left: 38%;
-            transform: translate(-50%, -50%);
-            opacity: .016;
-            animation: aa3 12s ease-in-out infinite;
-        }
-
-        @keyframes aa1 {
-            0%,
-            100% {
-                transform: translate(0, 0);
-            }
-            50% {
-                transform: translate(70px, 50px);
-            }
-        }
-        @keyframes aa2 {
-            0%,
-            100% {
-                transform: translate(0, 0);
-            }
-            50% {
-                transform: translate(-55px, -45px);
-            }
-        }
-        @keyframes aa3 {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.5);
-            }
-        }
+        .a1 { width: 900px; height: 900px; background: var(--g); top: -320px; left: -280px; opacity: .028; animation: aa1 16s ease-in-out infinite; }
+        .a2 { width: 700px; height: 700px; background: var(--g2); bottom: -260px; right: -200px; opacity: .035; animation: aa2 20s ease-in-out infinite; }
+        .a3 { width: 500px; height: 500px; background: var(--g4); top: 45%; left: 38%; transform: translate(-50%, -50%); opacity: .016; animation: aa3 12s ease-in-out infinite; }
+        @keyframes aa1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(70px,50px); } }
+        @keyframes aa2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-55px,-45px); } }
+        @keyframes aa3 { 0%,100% { transform: scale(1); } 50% { transform: scale(1.5); } }
 
         #ldr {
-            position: fixed;
-            inset: 0;
-            background: var(--bg);
-            z-index: 9998;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            transition: opacity .9s, visibility .9s;
+            position: fixed; inset: 0; background: var(--bg); z-index: 9998;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 20px; transition: opacity .9s, visibility .9s;
         }
-        #ldr.out {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
+        #ldr.out { opacity: 0; visibility: hidden; pointer-events: none; }
         .lz {
-            position: absolute;
-            font-family: var(--fd);
-            color: var(--g);
-            pointer-events: none;
-            text-shadow: var(--gl);
-            animation: lzf 6s ease-in-out infinite;
+            position: absolute; font-family: var(--fd); color: var(--g);
+            pointer-events: none; text-shadow: var(--gl); animation: lzf 6s ease-in-out infinite;
         }
-        .lz1 {
-            font-size: 180px;
-            top: 4%;
-            left: 2%;
-            opacity: .05;
-            animation-delay: 0s;
-        }
-        .lz2 {
-            font-size: 110px;
-            top: 10%;
-            right: 6%;
-            opacity: .04;
-            animation-delay: 2s;
-        }
-        .lz3 {
-            font-size: 75px;
-            bottom: 10%;
-            left: 10%;
-            opacity: .035;
-            animation-delay: 4s;
-        }
-        .lz4 {
-            font-size: 55px;
-            bottom: 18%;
-            right: 12%;
-            opacity: .03;
-            animation-delay: 1s;
-        }
-        @keyframes lzf {
-            0%,
-            100% {
-                transform: translateY(0) rotate(-8deg);
-            }
-            50% {
-                transform: translateY(-38px) rotate(6deg);
-            }
-        }
+        .lz1 { font-size: 180px; top: 4%; left: 2%; opacity: .05; animation-delay: 0s; }
+        .lz2 { font-size: 110px; top: 10%; right: 6%; opacity: .04; animation-delay: 2s; }
+        .lz3 { font-size: 75px; bottom: 10%; left: 10%; opacity: .035; animation-delay: 4s; }
+        .lz4 { font-size: 55px; bottom: 18%; right: 12%; opacity: .03; animation-delay: 1s; }
+        @keyframes lzf { 0%,100% { transform: translateY(0) rotate(-8deg); } 50% { transform: translateY(-38px) rotate(6deg); } }
         .l-brand {
-            font-family: var(--fd);
-            font-size: 130px;
-            letter-spacing: .12em;
-            color: var(--g);
-            text-shadow: var(--gxl);
-            animation: lbp 2s ease-in-out infinite;
-            z-index: 1;
-            position: relative;
-            line-height: 1;
+            font-family: var(--fd); font-size: 130px; letter-spacing: .12em; color: var(--g);
+            text-shadow: var(--gxl); animation: lbp 2s ease-in-out infinite; z-index: 1; position: relative; line-height: 1;
         }
-        @keyframes lbp {
-            0%,
-            100% {
-                text-shadow: var(--gxl);
-            }
-            50% {
-                text-shadow: 0 0 110px rgba(0, 255, 102, 1), 0 0 280px rgba(0, 255, 102, .45);
-            }
-        }
-        .l-moon {
-            width: 360px;
-            height: auto;
-            filter: drop-shadow(0 0 20px var(--g));
-            animation: mnp 3s ease-in-out infinite;
-            z-index: 1;
-            position: relative;
-            max-width: 80vw;
-        }
-        .l-slogan {
-            font-family: var(--fd);
-            font-size: 26px;
-            letter-spacing: .52em;
-            color: var(--g2);
-            text-shadow: var(--gs);
-            z-index: 1;
-            position: relative;
-        }
-        .l-sub {
-            font-family: var(--fm);
-            font-size: 13px;
-            letter-spacing: .28em;
-            color: var(--mut3);
-            text-transform: uppercase;
-            z-index: 1;
-            position: relative;
-        }
-        .l-bar-w {
-            width: 280px;
-            height: 2px;
-            background: var(--mut2);
-            overflow: hidden;
-            z-index: 1;
-            position: relative;
-        }
-        .l-bar {
-            height: 100%;
-            width: 35%;
-            background: linear-gradient(90deg, transparent, var(--g), transparent);
-            animation: lbs 1.3s ease-in-out infinite;
-        }
-        @keyframes lbs {
-            from {
-                transform: translateX(-150%);
-            }
-            to {
-                transform: translateX(420%);
-            }
-        }
-        .l-stat {
-            font-family: var(--fm);
-            font-size: 12px;
-            letter-spacing: .2em;
-            color: var(--mut3);
-            text-transform: uppercase;
-            z-index: 1;
-            position: relative;
-            text-align: center;
-            max-width: 380px;
-            line-height: 1.7;
-        }
+        @keyframes lbp { 0%,100% { text-shadow: var(--gxl); } 50% { text-shadow: 0 0 110px rgba(0,255,102,1), 0 0 280px rgba(0,255,102,.45); } }
+        .l-moon { width: 360px; height: auto; filter: drop-shadow(0 0 20px var(--g)); animation: mnp 3s ease-in-out infinite; z-index: 1; position: relative; max-width: 80vw; }
+        .l-slogan { font-family: var(--fd); font-size: 26px; letter-spacing: .52em; color: var(--g2); text-shadow: var(--gs); z-index: 1; position: relative; }
+        .l-sub { font-family: var(--fm); font-size: 13px; letter-spacing: .28em; color: var(--mut3); text-transform: uppercase; z-index: 1; position: relative; }
+        .l-bar-w { width: 280px; height: 2px; background: var(--mut2); overflow: hidden; z-index: 1; position: relative; }
+        .l-bar { height: 100%; width: 35%; background: linear-gradient(90deg, transparent, var(--g), transparent); animation: lbs 1.3s ease-in-out infinite; }
+        @keyframes lbs { from { transform: translateX(-150%); } to { transform: translateX(420%); } }
+        .l-stat { font-family: var(--fm); font-size: 12px; letter-spacing: .2em; color: var(--mut3); text-transform: uppercase; z-index: 1; position: relative; text-align: center; max-width: 380px; line-height: 1.7; }
 
         #nav {
-            position: sticky;
-            top: 0;
-            z-index: 9000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 22px;
-            height: 56px;
-            background: rgba(1, 3, 1, .96);
-            backdrop-filter: blur(30px);
-            border-bottom: 1px solid var(--bor2);
-            box-shadow: 0 1px 0 rgba(0, 255, 102, .08), 0 4px 40px rgba(0, 0, 0, .7);
+            position: sticky; top: 0; z-index: 9000; display: flex; align-items: center; justify-content: space-between;
+            padding: 0 22px; height: 56px; background: rgba(1,3,1,.96); backdrop-filter: blur(30px);
+            border-bottom: 1px solid var(--bor2); box-shadow: 0 1px 0 rgba(0,255,102,.08), 0 4px 40px rgba(0,0,0,.7);
         }
-        #nav::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--g), transparent);
-            box-shadow: var(--gs);
-        }
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .nav-moon {
-            width: 36px;
-            height: auto;
-            filter: drop-shadow(0 0 12px var(--g));
-            animation: mnp 3.5s ease-in-out infinite;
-        }
-        @keyframes mnp {
-            0%,
-            100% {
-                filter: drop-shadow(0 0 12px var(--g));
-            }
-            50% {
-                filter: drop-shadow(0 0 30px var(--g)) drop-shadow(0 0 60px rgba(0, 255, 102, .4));
-            }
-        }
-        .nav-brand {
-            font-family: var(--fd);
-            font-size: 28px;
-            letter-spacing: .1em;
-            color: #FFFFFF;
-            text-shadow: var(--gm);
-            line-height: 1;
-        }
-        .nav-tag {
-            font-family: var(--fm);
-            font-size: 10px;
-            letter-spacing: .16em;
-            color: var(--mut3);
-            text-transform: uppercase;
-        }
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        .nav-link {
-            font-family: var(--fm);
-            font-size: 11px;
-            letter-spacing: .14em;
-            text-transform: uppercase;
-            color: var(--mut3);
-            text-decoration: none;
-            transition: all .2s;
-            padding: 6px 12px;
-            border: 1px solid transparent;
-        }
-        .nav-link:hover {
-            color: var(--g);
-            text-shadow: var(--gs);
-            border-color: var(--bor2);
-        }
-        .nav-link.cta {
-            border-color: var(--bor3);
-            color: var(--g);
-            background: var(--gdim);
-            box-shadow: var(--gs);
-        }
-        .nav-link.cta:hover {
-            background: var(--gbright);
-            box-shadow: var(--gm);
-        }
+        #nav::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--g), transparent); box-shadow: var(--gs); }
+        .nav-logo { display: flex; align-items: center; gap: 10px; }
+        .nav-moon { width: 36px; height: auto; filter: drop-shadow(0 0 12px var(--g)); animation: mnp 3.5s ease-in-out infinite; }
+        @keyframes mnp { 0%,100% { filter: drop-shadow(0 0 12px var(--g)); } 50% { filter: drop-shadow(0 0 30px var(--g)) drop-shadow(0 0 60px rgba(0,255,102,.4)); } }
+        .nav-brand { font-family: var(--fd); font-size: 28px; letter-spacing: .1em; color: #FFFFFF; text-shadow: var(--gm); line-height: 1; }
+        .nav-tag { font-family: var(--fm); font-size: 10px; letter-spacing: .16em; color: var(--mut3); text-transform: uppercase; }
+        .nav-links { display: flex; align-items: center; gap: 14px; }
+        .nav-link { font-family: var(--fm); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--mut3); text-decoration: none; transition: all .2s; padding: 6px 12px; border: 1px solid transparent; }
+        .nav-link:hover { color: var(--g); text-shadow: var(--gs); border-color: var(--bor2); }
+        .nav-link.cta { border-color: var(--bor3); color: var(--g); background: var(--gdim); box-shadow: var(--gs); }
+        .nav-link.cta:hover { background: var(--gbright); box-shadow: var(--gm); }
 
         #hero {
-            position: relative;
-            z-index: 1;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px 20px 60px;
-            overflow: hidden;
+            position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center; padding: 40px 20px 60px; overflow: hidden;
         }
-        .hero-zzz {
-            position: absolute;
-            font-family: var(--fd);
-            color: var(--g);
-            pointer-events: none;
-            text-shadow: var(--gl);
-            opacity: .04;
-            animation: hzz 7s ease-in-out infinite;
-        }
-        .hz1 {
-            font-size: 140px;
-            top: 8%;
-            left: 5%;
-            animation-delay: 0s;
-        }
-        .hz2 {
-            font-size: 90px;
-            top: 15%;
-            right: 8%;
-            animation-delay: 1.5s;
-        }
-        .hz3 {
-            font-size: 60px;
-            bottom: 15%;
-            left: 12%;
-            animation-delay: 3s;
-        }
-        .hz4 {
-            font-size: 100px;
-            bottom: 10%;
-            right: 6%;
-            animation-delay: 4.5s;
-        }
-        @keyframes hzz {
-            0%,
-            100% {
-                transform: translateY(0) rotate(-5deg);
-                opacity: .03;
-            }
-            50% {
-                transform: translateY(-28px) rotate(4deg);
-                opacity: .06;
-            }
-        }
-        .hero-moon {
-            width: 240px;
-            height: auto;
-            filter: drop-shadow(0 0 28px var(--g)) drop-shadow(0 0 70px rgba(0, 255, 102, .35));
-            animation: mnp 3s ease-in-out infinite;
-            z-index: 2;
-            position: relative;
-            max-width: 70vw;
-        }
-        .hero-title {
-            font-family: var(--fd);
-            font-size: clamp(60px, 10vw, 140px);
-            letter-spacing: .08em;
-            color: #FFFFFF;
-            text-shadow: var(--gxl), 0 0 100px rgba(0, 255, 102, .5);
-            z-index: 2;
-            position: relative;
-            line-height: 1;
-            margin-top: 10px;
-        }
-        .hero-slogan {
-            font-family: var(--fd);
-            font-size: clamp(18px, 3vw, 32px);
-            letter-spacing: .4em;
-            color: var(--g2);
-            text-shadow: var(--gm);
-            z-index: 2;
-            position: relative;
-            margin-top: 6px;
-        }
-        .hero-sub {
-            font-family: var(--fb);
-            font-size: clamp(13px, 1.8vw, 17px);
-            font-weight: 500;
-            letter-spacing: .12em;
-            color: var(--cream2);
-            z-index: 2;
-            position: relative;
-            margin-top: 14px;
-            max-width: 600px;
-            line-height: 1.6;
-            opacity: .85;
-        }
-        .hero-ca-wrap {
-            z-index: 2;
-            position: relative;
-            margin-top: 24px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(0, 0, 0, .55);
-            border: 1px solid var(--bor2);
-            padding: 10px 16px;
-            max-width: 500px;
-            width: 100%;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .hero-ca-lbl {
-            font-family: var(--fm);
-            font-size: 10px;
-            letter-spacing: .2em;
-            color: var(--mut3);
-            text-transform: uppercase;
-            flex-shrink: 0;
-        }
-        .hero-ca-val {
-            font-family: var(--fm);
-            font-size: 11px;
-            color: var(--g3);
-            letter-spacing: .04em;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            max-width: 240px;
-        }
-        .hero-ca-btn {
-            font-family: var(--fm);
-            font-size: 10px;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            background: transparent;
-            border: 1px solid var(--bor2);
-            color: var(--g2);
-            cursor: pointer;
-            padding: 6px 14px;
-            transition: all .2s;
-            flex-shrink: 0;
-        }
-        .hero-ca-btn:hover {
-            background: var(--gdim);
-            border-color: var(--bor3);
-            color: var(--g);
-            box-shadow: var(--gs);
-        }
-        .hero-cta-row {
-            z-index: 2;
-            position: relative;
-            margin-top: 18px;
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .hero-cta {
-            font-family: var(--fd);
-            font-size: 18px;
-            letter-spacing: .16em;
-            text-transform: uppercase;
-            padding: 12px 32px;
-            border: 2px solid var(--bor3);
-            color: var(--g);
-            background: var(--gdim);
-            cursor: pointer;
-            text-decoration: none;
-            transition: all .25s;
-            box-shadow: var(--gs);
-        }
-        .hero-cta:hover {
-            background: var(--gbright);
-            box-shadow: var(--gm);
-            border-color: var(--g);
-            transform: translateY(-2px);
-        }
-        .hero-cta.secondary {
-            border-color: var(--bor);
-            color: var(--cream2);
-            background: transparent;
-            box-shadow: none;
-        }
-        .hero-cta.secondary:hover {
-            border-color: var(--bor3);
-            color: var(--g);
-            box-shadow: var(--gs);
-            background: var(--gdim);
-        }
+        .hero-zzz { position: absolute; font-family: var(--fd); color: var(--g); pointer-events: none; text-shadow: var(--gl); opacity: .04; animation: hzz 7s ease-in-out infinite; }
+        .hz1 { font-size: 140px; top: 8%; left: 5%; animation-delay: 0s; }
+        .hz2 { font-size: 90px; top: 15%; right: 8%; animation-delay: 1.5s; }
+        .hz3 { font-size: 60px; bottom: 15%; left: 12%; animation-delay: 3s; }
+        .hz4 { font-size: 100px; bottom: 10%; right: 6%; animation-delay: 4.5s; }
+        @keyframes hzz { 0%,100% { transform: translateY(0) rotate(-5deg); opacity: .03; } 50% { transform: translateY(-28px) rotate(4deg); opacity: .06; } }
+        .hero-moon { width: 240px; height: auto; filter: drop-shadow(0 0 28px var(--g)) drop-shadow(0 0 70px rgba(0,255,102,.35)); animation: mnp 3s ease-in-out infinite; z-index: 2; position: relative; max-width: 70vw; }
+        .hero-title { font-family: var(--fd); font-size: clamp(60px, 10vw, 140px); letter-spacing: .08em; color: #FFFFFF; text-shadow: var(--gxl), 0 0 100px rgba(0,255,102,.5); z-index: 2; position: relative; line-height: 1; margin-top: 10px; }
+        .hero-slogan { font-family: var(--fd); font-size: clamp(18px, 3vw, 32px); letter-spacing: .4em; color: var(--g2); text-shadow: var(--gm); z-index: 2; position: relative; margin-top: 6px; }
+        .hero-sub { font-family: var(--fb); font-size: clamp(13px, 1.8vw, 17px); font-weight: 500; letter-spacing: .12em; color: var(--cream2); z-index: 2; position: relative; margin-top: 14px; max-width: 600px; line-height: 1.6; opacity: .85; }
+        .hero-ca-wrap { z-index: 2; position: relative; margin-top: 24px; display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,.55); border: 1px solid var(--bor2); padding: 10px 16px; max-width: 500px; width: 100%; justify-content: center; flex-wrap: wrap; }
+        .hero-ca-lbl { font-family: var(--fm); font-size: 10px; letter-spacing: .2em; color: var(--mut3); text-transform: uppercase; flex-shrink: 0; }
+        .hero-ca-val { font-family: var(--fm); font-size: 11px; color: var(--g3); letter-spacing: .04em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 240px; }
+        .hero-ca-btn { font-family: var(--fm); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; background: transparent; border: 1px solid var(--bor2); color: var(--g2); cursor: pointer; padding: 6px 14px; transition: all .2s; flex-shrink: 0; }
+        .hero-ca-btn:hover { background: var(--gdim); border-color: var(--bor3); color: var(--g); box-shadow: var(--gs); }
+        .hero-cta-row { z-index: 2; position: relative; margin-top: 18px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+        .hero-cta { font-family: var(--fd); font-size: 18px; letter-spacing: .16em; text-transform: uppercase; padding: 12px 32px; border: 2px solid var(--bor3); color: var(--g); background: var(--gdim); cursor: pointer; text-decoration: none; transition: all .25s; box-shadow: var(--gs); }
+        .hero-cta:hover { background: var(--gbright); box-shadow: var(--gm); border-color: var(--g); transform: translateY(-2px); }
+        .hero-cta.secondary { border-color: var(--bor); color: var(--cream2); background: transparent; box-shadow: none; }
+        .hero-cta.secondary:hover { border-color: var(--bor3); color: var(--g); box-shadow: var(--gs); background: var(--gdim); }
 
         #stats {
-            position: relative;
-            z-index: 1;
-            padding: 40px 20px 50px;
-            max-width: 1100px;
-            margin: 0 auto;
+            position: relative; z-index: 1; padding: 40px 20px 50px; max-width: 1100px; margin: 0 auto;
         }
-        .stats-hd {
-            text-align: center;
-            margin-bottom: 28px;
-        }
-        .stats-hd-title {
-            font-family: var(--fd);
-            font-size: clamp(28px, 4vw, 44px);
-            letter-spacing: .14em;
-            color: var(--g);
-            text-shadow: var(--gm);
-        }
-        .stats-hd-sub {
-            font-family: var(--fm);
-            font-size: 11px;
-            letter-spacing: .2em;
-            color: var(--mut3);
-            text-transform: uppercase;
-            margin-top: 4px;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
-        }
-        .stat-card {
-            background: rgba(0, 6, 0, .85);
-            border: 1px solid var(--bor2);
-            padding: 16px 12px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: all .3s;
-        }
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--g2), transparent);
-            opacity: .7;
-        }
-        .stat-card:hover {
-            border-color: var(--bor3);
-            box-shadow: 0 0 22px rgba(0, 255, 102, .12);
-            transform: translateY(-2px);
-        }
-        .stat-card-lbl {
-            font-family: var(--fm);
-            font-size: 10px;
-            letter-spacing: .18em;
-            text-transform: uppercase;
-            color: var(--mut3);
-            display: block;
-        }
+        .stats-hd { text-align: center; margin-bottom: 28px; }
+        .stats-hd-title { font-family: var(--fd); font-size: clamp(28px, 4vw, 44px); letter-spacing: .14em; color: var(--g); text-shadow: var(--gm); }
+        .stats-hd-sub { font-family: var(--fm); font-size: 11px; letter-spacing: .2em; color: var(--mut3); text-transform: uppercase; margin-top: 4px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+        .stat-card { background: rgba(0,6,0,.85); border: 1px solid var(--bor2); padding: 16px 12px; text-align: center; position: relative; overflow: hidden; transition: all .3s; }
+        .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--g2), transparent); opacity: .7; }
+        .stat-card:hover { border-color: var(--bor3); box-shadow: 0 0 22px rgba(0,255,102,.12); transform: translateY(-2px); }
+        .stat-card-lbl { font-family: var(--fm); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--mut3); display: block; }
         .stat-card-val {
-            font-family: var(--fd);
-            font-size: clamp(20px, 3vw, 32px);
-            letter-spacing: .04em;
-            color: #FFFFFF;
-            text-shadow: 0 0 14px rgba(255, 255, 255, .2);
-            display: block;
-            margin-top: 6px;
-            line-height: 1;
-            animation: spulse 3s ease-in-out infinite;
+            font-family: var(--fd); font-size: clamp(24px, 3.5vw, 38px); letter-spacing: .08em;
+            color: var(--g); text-shadow: var(--star-glow); display: block; margin-top: 6px; line-height: 1;
+            animation: spulse 2.2s ease-in-out infinite;
         }
-        @keyframes spulse {
-            0%,
-            100% {
-                text-shadow: 0 0 14px rgba(255, 255, 255, .2);
-            }
-            50% {
-                text-shadow: 0 0 24px rgba(0, 255, 102, .45), 0 0 50px rgba(0, 255, 102, .15);
-            }
-        }
-        .stat-card-val.green {
-            color: var(--g);
-            text-shadow: var(--gs);
-            animation: spulseg 3s ease-in-out infinite;
-        }
-        @keyframes spulseg {
-            0%,
-            100% {
-                text-shadow: var(--gs);
-            }
-            50% {
-                text-shadow: var(--gm);
-            }
-        }
-        .stat-card-val.gold {
-            color: #FFE8A0;
-            text-shadow: 0 0 16px rgba(255, 208, 96, .5);
-            animation: spulsegold 3s ease-in-out infinite;
-        }
-        @keyframes spulsegold {
-            0%,
-            100% {
-                text-shadow: 0 0 16px rgba(255, 208, 96, .5);
-            }
-            50% {
-                text-shadow: 0 0 32px rgba(255, 208, 96, .8), 0 0 60px rgba(255, 208, 96, .25);
-            }
-        }
-        .stat-card-sub {
-            font-family: var(--fm);
-            font-size: 9px;
-            color: var(--mut3);
-            margin-top: 3px;
-            display: block;
-        }
+        @keyframes spulse { 0%,100% { text-shadow: var(--star-glow); } 50% { text-shadow: 0 0 35px rgba(0,255,102,1), 0 0 90px rgba(0,255,102,.6); } }
+        .stat-card-sub { font-family: var(--fm); font-size: 9px; color: var(--mut3); margin-top: 4px; display: block; letter-spacing: .1em; }
 
         #lore {
-            position: relative;
-            z-index: 1;
-            padding: 40px 20px 50px;
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
+            position: relative; z-index: 1; padding: 40px 20px 50px; max-width: 800px; margin: 0 auto; text-align: center;
         }
-        .lore-title {
-            font-family: var(--fd);
-            font-size: clamp(26px, 4vw, 40px);
-            letter-spacing: .12em;
-            color: var(--g);
-            text-shadow: var(--gm);
-            margin-bottom: 16px;
-        }
-        .lore-text {
-            font-family: var(--fb);
-            font-size: clamp(14px, 1.6vw, 17px);
-            font-weight: 500;
-            letter-spacing: .06em;
-            color: var(--cream2);
-            line-height: 1.7;
-            opacity: .8;
-            max-width: 650px;
-            margin: 0 auto;
-        }
-        .lore-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 24px;
-        }
-        .lore-pill {
-            font-family: var(--fm);
-            font-size: 11px;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            padding: 8px 18px;
-            border: 1px solid var(--bor2);
-            color: var(--g2);
-            background: var(--gdim);
-            transition: all .2s;
-        }
-        .lore-pill:hover {
-            border-color: var(--bor3);
-            color: var(--g);
-            box-shadow: var(--gs);
-        }
+        .lore-title { font-family: var(--fd); font-size: clamp(26px, 4vw, 40px); letter-spacing: .12em; color: var(--g); text-shadow: var(--gm); margin-bottom: 16px; }
+        .lore-text { font-family: var(--fb); font-size: clamp(14px, 1.6vw, 17px); font-weight: 500; letter-spacing: .06em; color: var(--cream2); line-height: 1.7; opacity: .8; max-width: 650px; margin: 0 auto; }
+        .lore-pills { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 24px; }
+        .lore-pill { font-family: var(--fm); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding: 8px 18px; border: 1px solid var(--bor2); color: var(--g2); background: var(--gdim); transition: all .2s; }
+        .lore-pill:hover { border-color: var(--bor3); color: var(--g); box-shadow: var(--gs); }
 
         #sleepStrip {
-            position: relative;
-            z-index: 1;
-            background: #000;
-            width: 100%;
-            height: 44px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            border-top: 1px solid var(--bor);
-            border-bottom: 1px solid var(--bor);
-            cursor: pointer;
+            position: relative; z-index: 1; background: #000; width: 100%; height: 44px; overflow: hidden;
+            display: flex; align-items: center; border-top: 1px solid var(--bor); border-bottom: 1px solid var(--bor); cursor: pointer;
         }
-        #sleepStrip .track {
-            display: flex;
-            align-items: center;
-            white-space: nowrap;
-            animation: scroll 18s linear infinite;
-            will-change: transform;
-        }
-        #sleepStrip:hover .track {
-            animation-play-state: paused;
-        }
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-        #sleepStrip .item {
-            display: inline-flex;
-            align-items: center;
-            font-size: 1.5rem;
-            padding: 0 6px;
-            filter: drop-shadow(0 0 6px #00ff66);
-        }
-        #sleepStrip .sleeper-strip {
-            display: inline-flex;
-            align-items: center;
-            gap: 3px;
-            padding: 0 8px;
-            font-size: 1.1rem;
-            color: #00ff66;
-            text-shadow: 0 0 8px #00ff66;
-            font-family: var(--fm);
-            font-weight: bold;
-            letter-spacing: 1px;
-            animation: zzzbob 2s ease-in-out infinite;
-        }
-        @keyframes zzzbob {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-2px);
-            }
-        }
-        #sleepStrip .dot {
-            display: inline-block;
-            width: 5px;
-            height: 5px;
-            background: #00ff66;
-            border-radius: 50%;
-            margin: 0 10px;
-            box-shadow: 0 0 6px #00ff66;
-            flex-shrink: 0;
-        }
+        #sleepStrip .track { display: flex; align-items: center; white-space: nowrap; animation: scroll 18s linear infinite; will-change: transform; }
+        #sleepStrip:hover .track { animation-play-state: paused; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        #sleepStrip .item { display: inline-flex; align-items: center; font-size: 1.5rem; padding: 0 6px; filter: drop-shadow(0 0 6px #00ff66); }
+        #sleepStrip .sleeper-strip { display: inline-flex; align-items: center; gap: 3px; padding: 0 8px; font-size: 1.1rem; color: #00ff66; text-shadow: 0 0 8px #00ff66; font-family: var(--fm); font-weight: bold; letter-spacing: 1px; animation: zzzbob 2s ease-in-out infinite; }
+        @keyframes zzzbob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+        #sleepStrip .dot { display: inline-block; width: 5px; height: 5px; background: #00ff66; border-radius: 50%; margin: 0 10px; box-shadow: 0 0 6px #00ff66; flex-shrink: 0; }
 
         #terminal {
-            position: relative;
-            z-index: 1;
-            max-width: 750px;
-            margin: 36px auto 36px;
-            background: rgba(0, 4, 0, .93);
-            border: 1px solid var(--bor2);
-            box-shadow: 0 0 30px rgba(0, 255, 102, .1), inset 0 0 20px rgba(0, 0, 0, .8);
-            overflow: hidden;
+            position: relative; z-index: 1; max-width: 750px; margin: 36px auto 36px;
+            background: rgba(0,4,0,.93); border: 1px solid var(--bor2);
+            box-shadow: 0 0 30px rgba(0,255,102,.1), inset 0 0 20px rgba(0,0,0,.8); overflow: hidden;
         }
-        #terminal::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--g), transparent);
-            box-shadow: var(--gs);
-            z-index: 1;
-        }
-        .term-hd {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 6px 10px 5px;
-            border-bottom: 1px solid var(--bor);
-            background: rgba(0, 255, 102, .04);
-            flex-shrink: 0;
-        }
-        .term-hd-l {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .term-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-        }
-        .td1 {
-            background: #FF5F57;
-        }
-        .td2 {
-            background: #FFBD2E;
-        }
-        .td3 {
-            background: var(--g);
-            box-shadow: 0 0 5px var(--g);
-        }
-        .term-title {
-            font-family: var(--fm);
-            font-size: 10px;
-            letter-spacing: .18em;
-            color: var(--g2);
-            text-transform: uppercase;
-            margin-left: 3px;
-        }
-        .term-st {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-family: var(--fm);
-            font-size: 10px;
-            letter-spacing: .1em;
-            color: var(--mut3);
-            text-transform: uppercase;
-        }
-        .term-st-dot {
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: var(--g);
-            box-shadow: var(--gs);
-            animation: blk 1.6s ease-in-out infinite;
-        }
-        @keyframes blk {
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: .15;
-                transform: scale(.6);
-            }
-        }
-        .term-body {
-            padding: 8px 10px 8px;
-            position: relative;
-            min-height: 120px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-        }
-        .term-body::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, .2) 2px, rgba(0, 0, 0, .2) 3px);
-            z-index: 1;
-        }
-        .term-lines {
-            display: flex;
-            flex-direction: column;
-            gap: 1px;
-            position: relative;
-            z-index: 2;
-        }
-        .tl {
-            font-family: var(--fm);
-            font-size: 10px;
-            letter-spacing: .08em;
-            line-height: 1.35;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            animation: tlfade .3s ease;
-        }
-        @keyframes tlfade {
-            from {
-                opacity: 0;
-                transform: translateY(4px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .tl-dim {
-            color: var(--mut3);
-        }
-        .tl-ok {
-            color: var(--g);
-        }
-        .tl-w {
-            color: #FFD060;
-        }
-        .tl-sl {
-            color: var(--g3);
-        }
-        .tl-d {
-            color: var(--cream2);
-        }
-        .tcrsr {
-            display: inline-block;
-            width: 6px;
-            height: 10px;
-            background: var(--g);
-            vertical-align: middle;
-            animation: tcrsr .75s step-end infinite;
-            box-shadow: var(--gs);
-            margin-left: 2px;
-        }
-        @keyframes tcrsr {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0;
-            }
-        }
+        #terminal::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--g), transparent); box-shadow: var(--gs); z-index: 1; }
+        .term-hd { display: flex; align-items: center; justify-content: space-between; padding: 6px 10px 5px; border-bottom: 1px solid var(--bor); background: rgba(0,255,102,.04); flex-shrink: 0; }
+        .term-hd-l { display: flex; align-items: center; gap: 5px; }
+        .term-dot { width: 6px; height: 6px; border-radius: 50%; }
+        .td1 { background: #FF5F57; } .td2 { background: #FFBD2E; } .td3 { background: var(--g); box-shadow: 0 0 5px var(--g); }
+        .term-title { font-family: var(--fm); font-size: 10px; letter-spacing: .18em; color: var(--g2); text-transform: uppercase; margin-left: 3px; }
+        .term-st { display: flex; align-items: center; gap: 4px; font-family: var(--fm); font-size: 10px; letter-spacing: .1em; color: var(--mut3); text-transform: uppercase; }
+        .term-st-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--g); box-shadow: var(--gs); animation: blk 1.6s ease-in-out infinite; }
+        @keyframes blk { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .15; transform: scale(.6); } }
+        .term-body { padding: 8px 10px 8px; position: relative; min-height: 120px; display: flex; flex-direction: column; justify-content: flex-end; }
+        .term-body::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.2) 2px, rgba(0,0,0,.2) 3px); z-index: 1; }
+        .term-lines { display: flex; flex-direction: column; gap: 1px; position: relative; z-index: 2; }
+        .tl { font-family: var(--fm); font-size: 10px; letter-spacing: .08em; line-height: 1.35; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; animation: tlfade .3s ease; }
+        @keyframes tlfade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+        .tl-dim { color: var(--mut3); } .tl-ok { color: var(--g); } .tl-w { color: #FFD060; } .tl-sl { color: var(--g3); } .tl-d { color: var(--cream2); }
+        .tcrsr { display: inline-block; width: 6px; height: 10px; background: var(--g); vertical-align: middle; animation: tcrsr .75s step-end infinite; box-shadow: var(--gs); margin-left: 2px; }
+        @keyframes tcrsr { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
 
         #footer {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 22px;
-            height: 44px;
-            background: rgba(1, 3, 1, .98);
-            border-top: 1px solid var(--bor);
-            box-shadow: 0 -4px 40px rgba(0, 0, 0, .6);
+            position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between;
+            padding: 0 22px; height: 44px; background: rgba(1,3,1,.98); border-top: 1px solid var(--bor);
+            box-shadow: 0 -4px 40px rgba(0,0,0,.6);
         }
-        #footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--g), transparent);
-            opacity: .45;
-        }
-        .ft-l {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .ft-logo {
-            font-family: var(--fd);
-            font-size: 22px;
-            letter-spacing: .14em;
-            color: var(--g);
-            text-shadow: var(--gm);
-        }
-        .ft-tag {
-            font-family: var(--fm);
-            font-size: 10px;
-            letter-spacing: .16em;
-            color: var(--mut3);
-            text-transform: uppercase;
-        }
-        .ftlks {
-            display: flex;
-            gap: 16px;
-        }
-        .ftl {
-            font-family: var(--fm);
-            font-size: 10px;
-            letter-spacing: .14em;
-            text-transform: uppercase;
-            color: var(--mut3);
-            text-decoration: none;
-            transition: all .2s;
-        }
-        .ftl:hover {
-            color: var(--g);
-            text-shadow: var(--gs);
-        }
+        #footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--g), transparent); opacity: .45; }
+        .ft-l { display: flex; align-items: center; gap: 12px; }
+        .ft-logo { font-family: var(--fd); font-size: 22px; letter-spacing: .14em; color: var(--g); text-shadow: var(--gm); }
+        .ft-tag { font-family: var(--fm); font-size: 10px; letter-spacing: .16em; color: var(--mut3); text-transform: uppercase; }
+        .ftlks { display: flex; gap: 16px; }
+        .ftl { font-family: var(--fm); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--mut3); text-decoration: none; transition: all .2s; }
+        .ftl:hover { color: var(--g); text-shadow: var(--gs); }
 
+        /* ========== MOBILE OVERRIDES – bigger logo and title ========== */
         @media(max-width:768px) {
-            #nav {
-                padding: 0 10px;
-                height: 46px;
-            }
-            .nav-moon {
-                width: 28px;
-            }
-            .nav-brand {
-                font-size: 22px;
-            }
-            .nav-tag {
-                font-size: 8px;
-                letter-spacing: .1em;
-            }
-            .nav-link {
-                font-size: 9px;
-                padding: 4px 8px;
-                letter-spacing: .08em;
-            }
-            .nav-links {
-                gap: 6px;
-            }
-            #hero {
-                padding: 30px 14px 40px;
-                min-height: 90vh;
-            }
-            .hero-moon {
-                width: 160px;
-            }
-            .hero-ca-wrap {
-                padding: 8px 10px;
-                gap: 5px;
-            }
-            .hero-ca-val {
-                font-size: 9px;
-                max-width: 160px;
-            }
-            .hero-ca-btn {
-                font-size: 9px;
-                padding: 5px 10px;
-            }
-            .hero-cta {
-                font-size: 15px;
-                padding: 10px 22px;
-            }
-            .hz1 {
-                font-size: 80px;
-            }
-            .hz2 {
-                font-size: 50px;
-            }
-            .hz3 {
-                font-size: 35px;
-            }
-            .hz4 {
-                font-size: 55px;
-            }
-            #stats {
-                padding: 30px 12px 35px;
-            }
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-            }
-            .stat-card {
-                padding: 12px 8px;
-            }
-            .stat-card-val {
-                font-size: 20px;
-            }
-            #lore {
-                padding: 30px 14px 35px;
-            }
-            .lore-pills {
-                gap: 6px;
-            }
-            .lore-pill {
-                font-size: 9px;
-                padding: 6px 12px;
-            }
-            #terminal {
-                margin: 24px 10px 24px;
-            }
-            #sleepStrip {
-                height: 36px;
-            }
-            #sleepStrip .item {
-                font-size: 1.2rem;
-            }
-            #sleepStrip .sleeper-strip {
-                font-size: .9rem;
-            }
-            #footer {
-                padding: 0 10px;
-                height: 38px;
-                gap: 6px;
-            }
-            .ft-logo {
-                font-size: 16px;
-            }
-            .ft-tag {
-                font-size: 8px;
-            }
-            .ftl {
-                font-size: 8px;
-            }
-            .l-brand {
-                font-size: 70px;
-            }
-            .l-moon {
-                width: 65vw;
-                max-width: 280px;
-            }
-            .l-slogan {
-                font-size: 17px;
-                letter-spacing: .3em;
-            }
-            .l-sub {
-                font-size: 10px;
-                letter-spacing: .16em;
-            }
-            .l-bar-w {
-                width: 180px;
-            }
-            .l-stat {
-                font-size: 10px;
-                max-width: 260px;
-            }
-            .lz1 {
-                font-size: 90px;
-            }
-            .lz2 {
-                font-size: 55px;
-            }
-            .lz3 {
-                font-size: 38px;
-            }
-            .lz4 {
-                font-size: 28px;
-            }
+            #nav { padding: 0 10px; height: 46px; }
+            .nav-moon { width: 28px; } .nav-brand { font-size: 22px; } .nav-tag { font-size: 8px; letter-spacing: .1em; }
+            .nav-link { font-size: 9px; padding: 4px 8px; letter-spacing: .08em; } .nav-links { gap: 6px; }
+            #hero { padding: 10px 10px 20px; min-height: 100vh; justify-content: flex-start; padding-top: 12vh; }
+            .hero-moon { width: 200px; max-width: 65vw; margin-bottom: 5px; }
+            .hero-title { font-size: clamp(56px, 14vw, 90px); margin-top: 0; }
+            .hero-slogan { font-size: clamp(17px, 4vw, 28px); letter-spacing: .35em; }
+            .hero-sub { font-size: 14px; padding: 0 10px; }
+            .hero-ca-wrap { padding: 8px 10px; gap: 5px; margin-top: 18px; }
+            .hero-ca-val { font-size: 10px; max-width: 180px; } .hero-ca-btn { font-size: 9px; padding: 5px 10px; }
+            .hero-cta { font-size: 16px; padding: 10px 24px; }
+            .hz1 { font-size: 80px; } .hz2 { font-size: 50px; } .hz3 { font-size: 35px; } .hz4 { font-size: 55px; }
+            #stats { padding: 30px 12px 35px; } .stats-grid { grid-template-columns: repeat(2,1fr); gap: 8px; }
+            .stat-card { padding: 12px 8px; } .stat-card-val { font-size: 24px; }
+            #lore { padding: 30px 14px 35px; } .lore-pills { gap: 6px; } .lore-pill { font-size: 9px; padding: 6px 12px; }
+            #terminal { margin: 24px 10px 24px; }
+            #sleepStrip { height: 36px; } #sleepStrip .item { font-size: 1.2rem; } #sleepStrip .sleeper-strip { font-size: .9rem; }
+            #footer { padding: 0 10px; height: 38px; gap: 6px; } .ft-logo { font-size: 16px; } .ft-tag { font-size: 8px; } .ftl { font-size: 8px; }
+            .l-brand { font-size: 70px; } .l-moon { width: 65vw; max-width: 280px; } .l-slogan { font-size: 17px; letter-spacing: .3em; }
+            .l-sub { font-size: 10px; letter-spacing: .16em; } .l-bar-w { width: 180px; } .l-stat { font-size: 10px; max-width: 260px; }
+            .lz1 { font-size: 90px; } .lz2 { font-size: 55px; } .lz3 { font-size: 38px; } .lz4 { font-size: 28px; }
         }
         @media(max-width:420px) {
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 6px;
-            }
-            .stat-card {
-                padding: 10px 6px;
-            }
-            .stat-card-val {
-                font-size: 17px;
-            }
-            .stat-card-lbl {
-                font-size: 8px;
-            }
-            .hero-moon {
-                width: 130px;
-            }
-            .hero-title {
-                font-size: 42px;
-            }
-            .hero-slogan {
-                font-size: 14px;
-                letter-spacing: .25em;
-            }
-            .nav-link {
-                font-size: 8px;
-                padding: 3px 6px;
-            }
-            #sleepStrip {
-                height: 32px;
-            }
-            #sleepStrip .item {
-                font-size: 1rem;
-            }
-            #sleepStrip .sleeper-strip {
-                font-size: .75rem;
-            }
+            #hero { padding-top: 8vh; }
+            .hero-moon { width: 180px; max-width: 70vw; }
+            .hero-title { font-size: 48px; }
+            .hero-slogan { font-size: 16px; letter-spacing: .28em; }
+            .hero-sub { font-size: 13px; }
+            .stats-grid { grid-template-columns: repeat(2,1fr); gap: 6px; }
+            .stat-card { padding: 10px 6px; } .stat-card-val { font-size: 22px; } .stat-card-lbl { font-size: 8px; }
+            .nav-link { font-size: 8px; padding: 3px 6px; }
+            #sleepStrip { height: 32px; } #sleepStrip .item { font-size: 1rem; } #sleepStrip .sleeper-strip { font-size: .75rem; }
         }
     </style>
 </head>
@@ -1221,10 +271,7 @@
     <div class="amb a3"></div>
 
     <div id="ldr">
-        <div class="lz lz1">ZZZ</div>
-        <div class="lz lz2">ZZ</div>
-        <div class="lz lz3">Z</div>
-        <div class="lz lz4">Zz</div>
+        <div class="lz lz1">ZZZ</div><div class="lz lz2">ZZ</div><div class="lz lz3">Z</div><div class="lz lz4">Zz</div>
         <img src="https://i.postimg.cc/y8QJTdCw/Chat-GPT-Image-14-may-2026-22-32-42-(1).png" class="l-moon" alt="SLEEP logo">
         <div class="l-brand">$SLEEP</div>
         <div class="l-slogan">SLEEP ON BAGS</div>
@@ -1236,10 +283,7 @@
     <nav id="nav">
         <div class="nav-logo">
             <img src="https://i.postimg.cc/y8QJTdCw/Chat-GPT-Image-14-may-2026-22-32-42-(1).png" class="nav-moon" alt="SLEEP logo">
-            <div>
-                <div class="nav-brand">$SLEEP</div>
-                <div class="nav-tag">Sleep On Your Bags</div>
-            </div>
+            <div><div class="nav-brand">$SLEEP</div><div class="nav-tag">Sleep On Your Bags</div></div>
         </div>
         <div class="nav-links">
             <a href="#stats" class="nav-link">Stats</a>
@@ -1250,17 +294,14 @@
     </nav>
 
     <section id="hero">
-        <div class="hero-zzz hz1">ZZZ</div>
-        <div class="hero-zzz hz2">ZZ</div>
-        <div class="hero-zzz hz3">Z</div>
-        <div class="hero-zzz hz4">Zz</div>
+        <div class="hero-zzz hz1">ZZZ</div><div class="hero-zzz hz2">ZZ</div><div class="hero-zzz hz3">Z</div><div class="hero-zzz hz4">Zz</div>
         <img src="https://i.postimg.cc/y8QJTdCw/Chat-GPT-Image-14-may-2026-22-32-42-(1).png" class="hero-moon" alt="SLEEP logo">
         <h1 class="hero-title">$SLEEP</h1>
         <p class="hero-slogan">SLEEP ON YOUR BAGS</p>
-        <p class="hero-sub">The only trading strategy that actually works. While others panic sell at 3AM, true degens rest easy. You can't paper-hand if you're unconscious. 💤</p>
+        <p class="hero-sub">The only strategy that always wins. While others panic, you rest. 💤</p>
         <div class="hero-ca-wrap">
             <span class="hero-ca-lbl">CA</span>
-            <span class="hero-ca-val" id="caV">COMING SOON — STAY TUNED</span>
+            <span class="hero-ca-val" id="caV">UPDATE AFTER LAUNCH</span>
             <button class="hero-ca-btn" id="caB">Copy</button>
         </div>
         <div class="hero-cta-row">
@@ -1272,51 +313,50 @@
     <section id="stats">
         <div class="stats-hd">
             <div class="stats-hd-title">Coin Stats</div>
-            <div class="stats-hd-sub">Live · Auto-Refreshing · Solana</div>
+            <div class="stats-hd-sub">Auto‑track via DexScreener · Provide pair ID to activate</div>
         </div>
         <div class="stats-grid">
             <div class="stat-card">
                 <span class="stat-card-lbl">Price</span>
-                <span class="stat-card-val green">$0.00₀₄₂₀</span>
-                <span class="stat-card-sub">USD</span>
+                <span class="stat-card-val">***</span>
+                <span class="stat-card-sub">awaiting pair ID</span>
             </div>
             <div class="stat-card">
                 <span class="stat-card-lbl">Market Cap</span>
-                <span class="stat-card-val gold">$420,069</span>
-                <span class="stat-card-sub">FDV</span>
+                <span class="stat-card-val">***</span>
+                <span class="stat-card-sub">awaiting pair ID</span>
             </div>
             <div class="stat-card">
                 <span class="stat-card-lbl">24H Volume</span>
-                <span class="stat-card-val">$69,420</span>
-                <span class="stat-card-sub">All pairs</span>
+                <span class="stat-card-val">***</span>
+                <span class="stat-card-sub">awaiting pair ID</span>
             </div>
             <div class="stat-card">
                 <span class="stat-card-lbl">24H Change</span>
-                <span class="stat-card-val green">+4.20%</span>
-                <span class="stat-card-sub">Green candles only</span>
+                <span class="stat-card-val">***</span>
+                <span class="stat-card-sub">awaiting pair ID</span>
             </div>
             <div class="stat-card">
                 <span class="stat-card-lbl">Holders</span>
-                <span class="stat-card-val">1,337</span>
-                <span class="stat-card-sub">Sleeping degens</span>
+                <span class="stat-card-val">***</span>
+                <span class="stat-card-sub">awaiting pair ID</span>
             </div>
             <div class="stat-card">
                 <span class="stat-card-lbl">Total Supply</span>
-                <span class="stat-card-val gold">1B</span>
-                <span class="stat-card-sub">$SLEEP</span>
+                <span class="stat-card-val">***</span>
+                <span class="stat-card-sub">awaiting pair ID</span>
             </div>
         </div>
     </section>
 
     <section id="lore">
-        <h2 class="lore-title">The Sleep On Your Bags Manifesto</h2>
+        <h2 class="lore-title">Sleep On Your Bags Manifesto</h2>
         <p class="lore-text">
-            In a world of 24/7 chart watching, sleepless nights, and panic-induced paper hands, one strategy stands above all:
-            <strong>just sleep.</strong><br><br>
-            $SLEEP is the first meme coin built on the radical idea that the best trade is no trade at all.
-            Diamond pillow hands. You can't panic sell if you're unconscious. The comfiest position in crypto.
-            <br><br>
-            <em>Sleep on your bags. Wake up to riches. Or don't wake up at all. Either way, you're winning.</em> 😴💎
+            No alarms. No charts. No panic.<br>
+            $SLEEP is the radical idea that the best trade is no trade.<br>
+            Diamond pillow hands. You can’t paper‑hand while unconscious.<br>
+            The comfiest position in crypto.<br><br>
+            <em>Sleep on your bags. Wake up to riches. Or don’t. Either way, you win.</em> 😴💎
         </p>
         <div class="lore-pills">
             <span class="lore-pill">😴 Diamond Pillow Hands</span>
@@ -1374,14 +414,12 @@
     <script>
         (function() {
             'use strict';
-
             const caEl = document.getElementById('caV');
             const caBtn = document.getElementById('caB');
-
             caBtn.addEventListener('click', async function() {
                 try {
                     const addr = caEl.textContent.trim();
-                    if (addr && addr.length > 10 && addr !== "COMING SOON — STAY TUNED") {
+                    if (addr && addr.length > 10 && addr !== "UPDATE AFTER LAUNCH") {
                         await navigator.clipboard.writeText(addr);
                         this.textContent = 'Copied!';
                         setTimeout(() => this.textContent = 'Copy', 2000);
@@ -1409,7 +447,6 @@
                 bi = (bi + 1) % bootMsgs.length;
                 if (ldSt) ldSt.textContent = bootMsgs[bi];
             }, 1800);
-
             setTimeout(() => {
                 clearInterval(bootInterval);
                 loader.classList.add('out');
@@ -1420,8 +457,7 @@
             const termLines = document.getElementById('termLines');
             const sleepMsgs = [
                 { c: 'tl-sl', t: '> ZZZ... monitoring bags... 😴' },
-                { c: 'tl-dim',
-            t: '> scanning for paper hands... none found. 🌙' },
+                { c: 'tl-dim', t: '> scanning for paper hands... none found. 🌙' },
                 { c: 'tl-ok', t: '> all systems nominal. sleeping. 💤' },
                 { c: 'tl-sl', t: '> true degens rest easy. 🛌' },
                 { c: 'tl-w', t: '> volatility detected. staying calm. 🧘' },
@@ -1442,7 +478,6 @@
                 { c: 'tl-w', t: '> price action: irrelevant to sleepers. 📉😴' },
             ];
             let msgIdx = 0;
-
             function addLine(cls, text) {
                 if (!termLines) return;
                 const el = document.createElement('div');
@@ -1458,13 +493,11 @@
                 termLines.appendChild(prompt);
                 while (termLines.children.length > MAX_LINES + 1) termLines.removeChild(termLines.firstChild);
             }
-
             function randomMsg() {
                 const m = sleepMsgs[msgIdx % sleepMsgs.length];
                 addLine(m.c, m.t);
                 msgIdx++;
             }
-
             const bootSequence = [
                 [800, 'tl-dim', '> SLEEP_AGENT v2.1 booting... 💤'],
                 [1600, 'tl-ok', '> connected to Solana RPC 🔌'],
@@ -1474,18 +507,15 @@
                 [4800, 'tl-sl', '> entering deep monitoring mode... 😴'],
                 [5600, 'tl-ok', '> ZZZ... agent fully awake. ironic. 🤖'],
             ];
-
             setTimeout(() => {
                 bootSequence.forEach(([delay, cls, text]) => {
                     setTimeout(() => addLine(cls, text), delay);
                 });
             }, 5000);
-
             setTimeout(() => {
                 randomMsg();
                 setInterval(randomMsg, 3200);
             }, 11000);
-
             setInterval(() => {
                 addLine('tl-dim', '> pulse: bags still packed... 🫀');
                 setTimeout(() => addLine('tl-ok', '> all clear. keep sleeping. 🌙'), 1300);
